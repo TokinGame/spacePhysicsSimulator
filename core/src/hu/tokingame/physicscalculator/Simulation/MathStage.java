@@ -22,15 +22,20 @@ public class MathStage extends MyStage {
     float elapsedtime = 0;
 
     MyLabel input1, input2, input3, input4;
+    InputButtons input;
+    float var1 = 0, var2 = 0, var3 = 0, var4 = 0;
 
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
     }
 
 
+    MathStage stage;
+
     public MathStage(Viewport viewport, Batch batch, final MyGdxGame game) {
 
         super(viewport, batch, game);
+        stage = this;
         Gdx.input.setCatchBackKey(true);
 
         addActor(new MyTextButton("nem"){
@@ -47,14 +52,23 @@ public class MathStage extends MyStage {
                 });
             }
         });
-        addActor(input1 = new MyLabel("1", MyLabel.style));
-        addActor(input2 = new MyLabel("2", MyLabel.style));
-        addActor(input3 = new MyLabel("3", MyLabel.style));
-        addActor(input4 = new MyLabel("4", MyLabel.style));
+        addActor(input1 = new MyLabel(var1+" m/s", MyLabel.style));
+        addActor(input2 = new MyLabel(var2+"°", MyLabel.style));
+        addActor(input3 = new MyLabel(var3+" m", MyLabel.style));
+        addActor(input4 = new MyLabel(var4+" m", MyLabel.style));
         input1.setPosition(100, 600);
         input2.setPosition(100, 500);
         input3.setPosition(100, 400);
         input4.setPosition(100, 300);
+
+
+        input1.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                stage.addActor(input = new InputButtons(stage));
+            }
+        });
 
     }
 
