@@ -41,7 +41,6 @@ public class Assets {
             = new AssetDescriptor<BitmapFont>("digital-7.ttf", BitmapFont.class, fontParameter2);
 
 
-    public static final AssetDescriptor<Texture> DUCK = new AssetDescriptor<Texture>("texture/dukk.jpg", Texture.class);
 
 
 
@@ -59,7 +58,6 @@ public class Assets {
 
 
 
-        manager.load(DUCK);
 
         manager.load(CALIBRIL_FONT);
         manager.load(DIGITAL_7_FONT);

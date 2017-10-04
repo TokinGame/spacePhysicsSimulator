@@ -1,4 +1,4 @@
-package hu.tokingame.physicscalculator.Menu;
+package hu.tokingame.physicscalculator.Settings;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -8,22 +8,16 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.util.ArrayList;
-
-import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
-import hu.tokingame.physicscalculator.BaseClass.OneSpriteActor;
-import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.MyGdxGame;
-import hu.tokingame.physicscalculator.Settings.SettingsScreen;
 
 /**
  * Created by davim on 2016. 10. 07..
  */
 
-public class MenuStage extends MyStage {
+public class SettingsStage extends MyStage {
 
     float elapsedtime = 0;
 
@@ -32,20 +26,12 @@ public class MenuStage extends MyStage {
     }
 
 
-    public MenuStage(Viewport viewport, Batch batch,final MyGdxGame game) {
+    public SettingsStage(Viewport viewport, Batch batch,final MyGdxGame game) {
 
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
-        addActor(new MyTextButton("Egy"){
-            @Override
-            protected void init() {
-                super.init();
-                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 450);
-            }
-        });
-
-        addActor(new MyTextButton("segg"){
+        addActor(new MyTextButton("vissza he"){
             @Override
             protected void init() {
                 super.init();
@@ -54,11 +40,12 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new SettingsScreen(game), true);
+                        game.setScreenBackByStackPop();
                     }
                 });
             }
         });
+
 
 
     }
@@ -70,7 +57,7 @@ public class MenuStage extends MyStage {
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK){
-           game.setScreenBackByStackPop();
+            game.setScreenBackByStackPop();
         }
         return false;
     }

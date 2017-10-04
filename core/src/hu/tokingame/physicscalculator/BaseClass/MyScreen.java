@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+import hu.tokingame.physicscalculator.MyGdxGame;
+
 /**
  * Created by davim on 2016. 09. 30..
  */
@@ -21,11 +23,11 @@ abstract public class MyScreen implements Screen {
 
     public float r=0,g=0,b=0;
 
-    protected Game game;
+    protected MyGdxGame game;
 
 
 
-    public MyScreen(Game game) {
+    public MyScreen(MyGdxGame game) {
         this.game = game;
         camera.translate(WORLD_WIDTH/2, WORLD_HEIGHT/2);
         camera.update();
@@ -72,7 +74,7 @@ abstract public class MyScreen implements Screen {
         MyTextButton.refresh();
     }
 
-    public Game getGame() {
+    public MyGdxGame getGame() {
         return game;
     }
 

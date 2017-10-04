@@ -7,6 +7,7 @@ import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.MyScreen;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.Menu.MenuScreen;
+import hu.tokingame.physicscalculator.MyGdxGame;
 
 /**
  * Created by M on 10/7/2016.
@@ -19,7 +20,7 @@ public class BetoltoScreen extends MyScreen {
     private float elapsedTime = 0;
     private OneSpriteStaticActor backGround;
 
-    public BetoltoScreen(Game game) {
+    public BetoltoScreen(MyGdxGame game) {
         super(game);
         setBackGroundColor(0f, 0f, 0f);
         stage = new Stage(viewport, spriteBatch);
