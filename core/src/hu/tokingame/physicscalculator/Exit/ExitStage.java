@@ -1,4 +1,20 @@
-package hu.tokingame.physicscalculator.Menu;
+package hu.tokingame.physicscalculator.Exit;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
+import hu.tokingame.physicscalculator.BaseClass.Globals;
+import hu.tokingame.physicscalculator.BaseClass.MyLabel;
+import hu.tokingame.physicscalculator.BaseClass.MyStage;
+import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
+import hu.tokingame.physicscalculator.Menu.MenuScreen;
+import hu.tokingame.physicscalculator.MyGdxGame;
+import hu.tokingame.physicscalculator.Settings.SettingsScreen;
+import hu.tokingame.physicscalculator.Simulation.MathScreen;
+
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -12,66 +28,34 @@ import java.util.ArrayList;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
-import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteActor;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
-import hu.tokingame.physicscalculator.Exit.ExitScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Settings.SettingsScreen;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 
-/**
- * Created by davim on 2016. 10. 07..
- */
 
-public class MenuStage extends MyStage {
+
+public class ExitStage extends MyStage {
 
     float elapsedtime = 0;
 
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
     }
+    MyLabel uzi;
 
-
-    MyLabel szoveg;
-
-    public MenuStage(Viewport viewport, Batch batch,final MyGdxGame game) {
+    public ExitStage(Viewport viewport, Batch batch, final MyGdxGame game) {
 
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
-        addActor(new MyTextButton("Egy"){
-            @Override
-            protected void init() {
-                super.init();
-                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 450);
-                addListener(new ClickListener(){
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        super.clicked(event, x, y);
-                        game.setScreen(new MathScreen(game, 1), true);
-                    }
-                });
-            }
-        });
-        addActor(new MyTextButton("Kettő"){
-            @Override
-            protected void init() {
-                super.init();
-                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 400);
-                addListener(new ClickListener(){
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        super.clicked(event, x, y);
-                        game.setScreen(new MathScreen(game,2), true);
-                    }
-                });
-            }
-        });
+        addActor(uzi=new MyLabel("Biztosan hátra akarod hagyni az űrkutatást?",MyLabel.style));
+        uzi.setPosition(Globals.WORLD_WIDTH/2-uzi.getWidth()/2f, Globals.WORLD_HEIGHT/2-uzi.getHeight()/2f+200);
 
-        addActor(new MyTextButton("segg"){
+        addActor(new MyTextButton("Nem"){
             @Override
             protected void init() {
                 super.init();
@@ -80,14 +64,13 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new SettingsScreen(game), true);
+                        game.setScreen(new MenuScreen(game), true);
                     }
                 });
             }
         });
 
-
-        addActor(new MyTextButton("Exit"){
+        addActor(new MyTextButton("Igen"){
             @Override
             protected void init() {
                 super.init();
@@ -96,11 +79,12 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new ExitScreen(game), true);
+                        System.exit(0);
                     }
                 });
             }
         });
+
 
     }
 
@@ -111,7 +95,7 @@ public class MenuStage extends MyStage {
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK){
-           game.setScreen(new ExitScreen(game), true);
+            game.setScreenBackByStackPop();
         }
         return false;
     }
@@ -147,4 +131,3 @@ public class MenuStage extends MyStage {
         refresh();
     }
 }
-
