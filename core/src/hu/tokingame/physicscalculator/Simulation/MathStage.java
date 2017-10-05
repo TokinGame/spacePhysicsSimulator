@@ -21,22 +21,33 @@ public class MathStage extends MyStage {
 
     float elapsedtime = 0;
 
-    MyLabel input1, input2, input3, input4;
-    InputButtons input;
+    MyLabel szam1, szam2, szoveg3, szoveg4;
+    InputButtons inputButtons;
     float var1 = 0, var2 = 0, var3 = 0, var4 = 0;
 
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
     }
 
+    int mode;
+
+    float[] vegeredmeny = new float[2];
+
 
     MathStage stage;
 
-    public MathStage(Viewport viewport, Batch batch, final MyGdxGame game) {
+    public MathStage(Viewport viewport, Batch batch, final MyGdxGame game, int mode) {
 
         super(viewport, batch, game);
         stage = this;
+        this.mode = mode;
         Gdx.input.setCatchBackKey(true);
+
+
+        stage.addActor(inputButtons = new InputButtons(stage));
+        inputButtons.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+        inputButtons.setPosition(0,0);
+
 
         addActor(new MyTextButton("nem"){
             @Override
@@ -52,23 +63,46 @@ public class MathStage extends MyStage {
                 });
             }
         });
-        addActor(input1 = new MyLabel(var1+" m/s", MyLabel.style));
-        addActor(input2 = new MyLabel(var2+"°", MyLabel.style));
-        addActor(input3 = new MyLabel(var3+" m", MyLabel.style));
-        addActor(input4 = new MyLabel(var4+" m", MyLabel.style));
-        input1.setPosition(100, 600);
-        input2.setPosition(100, 500);
-        input3.setPosition(100, 400);
-        input4.setPosition(100, 300);
+        addActor(szam1 = new MyLabel("", MyLabel.style2));
+        addActor(szam2 = new MyLabel("", MyLabel.style2));
+        addActor(szoveg3 = new MyLabel(var3+" m", MyLabel.style));
+        addActor(szoveg4 = new MyLabel(var4+" m", MyLabel.style));
+
+        MyLabel szovegcucc;
+        addActor(szovegcucc = new MyLabel("Erő: ", MyLabel.style));
+        szovegcucc.setPosition(50, 600);
+        MyLabel szovegcucc2;
+        addActor(szovegcucc2 = new MyLabel("Szög: ", MyLabel.style));
+        szovegcucc2.setPosition(50, 500);
 
 
-        input1.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
-                stage.addActor(input = new InputButtons(stage));
-            }
-        });
+        if(mode == 1){
+            szam1.setPosition(200, 600);
+            szam2.setPosition(200, 500);
+            szoveg3.setPosition(100, 300);
+            szoveg4.setPosition(100, 200);
+            szovegcucc.addListener(new ClickListener(){
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    super.clicked(event, x, y);
+                    inputButtons.show(szam1);
+                }
+            });
+            szovegcucc2.addListener(new ClickListener(){
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    super.clicked(event, x, y);
+                    inputButtons.show(szam2);
+                }
+            });
+        }else{
+
+        }
+
+
+
+
+
 
     }
 
