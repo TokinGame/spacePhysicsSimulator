@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
+import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteActor;
@@ -33,6 +34,8 @@ public class MenuStage extends MyStage {
     }
 
 
+    MyLabel szoveg;
+
     public MenuStage(Viewport viewport, Batch batch,final MyGdxGame game) {
 
         super(viewport, batch, game);
@@ -47,7 +50,21 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new MathScreen(game), true);
+                        game.setScreen(new MathScreen(game, 1), true);
+                    }
+                });
+            }
+        });
+        addActor(new MyTextButton("Kettő"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 400);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new MathScreen(game,2), true);
                     }
                 });
             }

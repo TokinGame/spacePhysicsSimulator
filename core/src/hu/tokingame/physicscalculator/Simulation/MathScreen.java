@@ -14,9 +14,9 @@ public class MathScreen extends MyScreen {
 
 
 
-    public MathScreen(MyGdxGame game) {
+    public MathScreen(MyGdxGame game, int mode) {
         super(game);
-        mathStage = new MathStage(viewport, spriteBatch, game);
+        mathStage = new MathStage(viewport, spriteBatch, game, mode);
         Gdx.input.setInputProcessor(mathStage);
     }
 
