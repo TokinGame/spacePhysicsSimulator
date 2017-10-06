@@ -15,29 +15,15 @@ import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 
 public class InputButtons extends Group {
 
-    MyTextButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0;
+    MyTextButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, close;
 
     MyLabel var;
-
 
     public InputButtons(MathStage stage) {
         setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
 
         //TODO add gombok
 
-
-
-
-
-
-
-
-    }
-
-
-
-
-    public void show(MyLabel szoveg){
         b1 = new MyTextButton("1");
         b2 = new MyTextButton("2");
         b3 = new MyTextButton("3");
@@ -48,6 +34,7 @@ public class InputButtons extends Group {
         b8 = new MyTextButton("8");
         b9 = new MyTextButton("9");
         b0 = new MyTextButton("0");
+        close = new MyTextButton("Bezár");
 
         b1.setPosition(800, 600);
         b2.setPosition(900, 600);
@@ -59,6 +46,7 @@ public class InputButtons extends Group {
         b8.setPosition(900, 400);
         b9.setPosition(1000, 400);
         b0.setPosition(900, 300);
+        close.setPosition(800, 200);
 
         addActor(b1);
         addActor(b2);
@@ -70,81 +58,120 @@ public class InputButtons extends Group {
         addActor(b8);
         addActor(b9);
         addActor(b0);
+        addActor(close);
 
-        var = szoveg;
 
         b0.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"0");
+                iras("0");
             }
         });
         b1.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"1");
+                iras("1");
             }
         });
         b2.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"2");
+                iras("2");
             }
         });
         b3.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"3");
+                iras("3");
             }
         });
         b4.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"4");
+                iras("4");
             }
         });
         b5.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"5");
+                iras("5");
             }
         });
         b6.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"6");
+                iras("6");
             }
         });
         b7.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"7");
+                iras("7");
             }
         });
         b8.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"8");
+                iras("8");
             }
         });
         b9.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                var.setText(var.getText()+"9");
+                iras("9");
+            }
+        });
+        close.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                hide();
             }
         });
 
+    }
 
+    void iras(String t){
+        if(var != null){
+            if(var.getText().length() <= Globals.maximumInputLength){
+                if(t.equals("0")){
+                    if(var.getText().equals(" ") || var.getText().equals("")) var.setText("");
+                    else var.setText(var.getText()+t);
+                }else {
+                    var.setText(var.getText()+t);
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public void show(MyLabel szoveg){
+        this.setPosition(0, 0);
+        var = szoveg;
+
+    }
+
+    public void hide(){
+        this.setPosition(1280, 0);
     }
 
 }

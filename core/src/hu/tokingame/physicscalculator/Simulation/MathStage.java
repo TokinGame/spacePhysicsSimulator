@@ -46,7 +46,7 @@ public class MathStage extends MyStage {
 
         stage.addActor(inputButtons = new InputButtons(stage));
         inputButtons.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
-        inputButtons.setPosition(0,0);
+        inputButtons.setPosition(1280,0);
 
 
         addActor(new MyTextButton("nem"){
@@ -63,10 +63,10 @@ public class MathStage extends MyStage {
                 });
             }
         });
-        addActor(szam1 = new MyLabel("", MyLabel.style2));
-        addActor(szam2 = new MyLabel("", MyLabel.style2));
-        addActor(szoveg3 = new MyLabel(var3+" m", MyLabel.style));
-        addActor(szoveg4 = new MyLabel(var4+" m", MyLabel.style));
+        addActor(szam1 = new MyLabel(" ", MyLabel.style));
+        addActor(szam2 = new MyLabel(" ", MyLabel.style));
+        addActor(szoveg3 = new MyLabel("Távolság: "+var3+" m", MyLabel.style));
+        addActor(szoveg4 = new MyLabel("Magasság: "+var4+" m", MyLabel.style));
 
         MyLabel szovegcucc;
         addActor(szovegcucc = new MyLabel("Erő: ", MyLabel.style));
@@ -136,6 +136,7 @@ public class MathStage extends MyStage {
 
 
         refresh();
+        setDebugAll(true);
     }
 }
 
