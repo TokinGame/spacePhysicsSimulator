@@ -85,7 +85,12 @@ public class MathStage extends MyStage {
                         super.clicked(event, x, y);
                         try {
                             float[] fasz = Calculator.calcAlpha(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
-                            eredmeny.setText(fasz[0] + " fasz " + fasz[1]);
+                            if (fasz[0] == (float)-666.0) {
+                                eredmeny.setText("Látom te is annyira értesz a fizikához mint mi.");
+                                return;
+                            }else{
+                                eredmeny.setText(fasz[0] + " fasz " + fasz[1]);
+                            }
                         }catch (NumberFormatException e){
                             eredmeny.setText("Spanish inquisition");
                         }
@@ -96,13 +101,13 @@ public class MathStage extends MyStage {
         });
 
 
-        addActor(szovegcucc = new MyTextButton("Távolság: ", null));
+        addActor(szovegcucc = new MyTextButton("Sebesség: ", null));
         szovegcucc.setPosition(50, 600);
         szovegcucc.setTexture(Assets.manager.get(Assets.BUTTONBG));
-        addActor(szovegcucc2 = new MyTextButton("Magasság: ", null));
+        addActor(szovegcucc2 = new MyTextButton("Távolság: ", null));
         szovegcucc2.setPosition(50, 500);
         szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTONBG));
-        addActor(szovegcucc3 = new MyTextButton("Sebesség: ", null));
+        addActor(szovegcucc3 = new MyTextButton("Magasság: ", null));
         szovegcucc3.setPosition(50, 400);
         szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTONBG));
         MyLabel ered;
