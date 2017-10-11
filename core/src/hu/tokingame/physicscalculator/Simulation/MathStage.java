@@ -65,14 +65,14 @@ public class MathStage extends MyStage {
         });
         addActor(szam1 = new MyLabel("", MyLabel.style));
         addActor(szam2 = new MyLabel("", MyLabel.style));
-        addActor(eredmeny1 = new MyLabel("Távolság: "+var3+" m", MyLabel.style));
-        addActor(eredmeny2 = new MyLabel("Magasság: "+var4+" m", MyLabel.style));
+        addActor(eredmeny1 = new MyLabel("Erő: "+var3+" n", MyLabel.style));
+        addActor(eredmeny2 = new MyLabel("Szög: "+var4+" °", MyLabel.style));
 
         MyLabel szovegcucc;
-        addActor(szovegcucc = new MyLabel("Erő: ", MyLabel.style));
+        addActor(szovegcucc = new MyLabel("Távolság: ", MyLabel.style));
         szovegcucc.setPosition(50, 600);
         MyLabel szovegcucc2;
-        addActor(szovegcucc2 = new MyLabel("Szög: ", MyLabel.style));
+        addActor(szovegcucc2 = new MyLabel("Magasság: ", MyLabel.style));
         szovegcucc2.setPosition(50, 500);
         MyLabel ered;
         addActor(ered = new MyLabel("Eredmények: ", MyLabel.style));
@@ -81,8 +81,8 @@ public class MathStage extends MyStage {
 
 
         if(mode == 1){
-            szam1.setPosition(200, 600);
-            szam2.setPosition(200, 500);
+            szam1.setPosition(300, 600);
+            szam2.setPosition(300, 500);
             szam1.setSize(210, 60);
             szam2.setSize(210, 60);
             eredmeny1.setPosition(100, 200);
