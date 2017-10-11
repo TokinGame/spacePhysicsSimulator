@@ -71,7 +71,7 @@ public class MenuStage extends MyStage {
             }
         });
 
-        addActor(new MyTextButton("nem segg"){
+        addActor(new MyTextButton("segg"){
             @Override
             protected void init() {
                 super.init();
