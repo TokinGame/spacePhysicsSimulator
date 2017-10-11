@@ -54,6 +54,8 @@ public class MenuStage extends MyStage {
                         game.setScreen(new MathScreen(game, 1), true);
                     }
                 });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
         addActor(new MyTextButton("Kettő", Assets.manager.get(Assets.STEELBUTTON), true){
