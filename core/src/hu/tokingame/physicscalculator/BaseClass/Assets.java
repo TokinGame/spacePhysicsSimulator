@@ -40,6 +40,8 @@ public class Assets {
     public static final AssetDescriptor<BitmapFont> DIGITAL_7_FONT
             = new AssetDescriptor<BitmapFont>("digital-7.ttf", BitmapFont.class, fontParameter2);
 
+    public static final AssetDescriptor<Texture> BUTTONBG = new AssetDescriptor<Texture>("buttonbg.png", Texture.class);
+
 
 
 
@@ -61,6 +63,8 @@ public class Assets {
 
         manager.load(CALIBRIL_FONT);
         manager.load(DIGITAL_7_FONT);
+
+        manager.load(BUTTONBG);
 
 
     }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
@@ -22,6 +23,7 @@ public class MathStage extends MyStage {
     float elapsedtime = 0;
 
     MyLabel szam1, szam2, eredmeny1, eredmeny2;
+    MyTextButton szovegcucc, szovegcucc2;
     InputButtons inputButtons;
     float var1 = 0, var2 = 0, var3 = 0, var4 = 0;
 
@@ -68,12 +70,13 @@ public class MathStage extends MyStage {
         addActor(eredmeny1 = new MyLabel("Erő: "+var3+" n", MyLabel.style));
         addActor(eredmeny2 = new MyLabel("Szög: "+var4+" °", MyLabel.style));
 
-        MyLabel szovegcucc;
-        addActor(szovegcucc = new MyLabel("Távolság: ", MyLabel.style));
+
+        addActor(szovegcucc = new MyTextButton("Távolság: ", null));
         szovegcucc.setPosition(50, 600);
-        MyLabel szovegcucc2;
-        addActor(szovegcucc2 = new MyLabel("Magasság: ", MyLabel.style));
+        szovegcucc.setTexture(Assets.manager.get(Assets.BUTTONBG));
+        addActor(szovegcucc2 = new MyTextButton("Magasság: ", null));
         szovegcucc2.setPosition(50, 500);
+        szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTONBG));
         MyLabel ered;
         addActor(ered = new MyLabel("Eredmények: ", MyLabel.style));
         ered.setPosition(50, 300);
@@ -92,6 +95,8 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam1);
+                    szovegcucc.enableTexture(true);
+                    szovegcucc2.enableTexture(false);
                 }
             });
             szovegcucc2.addListener(new ClickListener(){
@@ -99,6 +104,8 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam2);
+                    szovegcucc.enableTexture(false);
+                    szovegcucc2.enableTexture(true);
                 }
             });
         }else{
@@ -135,6 +142,11 @@ public class MathStage extends MyStage {
         super.act(delta);
         elapsedtime += delta;
 
+    }
+
+    public void disableButtons(){
+        szovegcucc.enableTexture(false);
+        szovegcucc2.enableTexture(false);
     }
 
     public void init(){
