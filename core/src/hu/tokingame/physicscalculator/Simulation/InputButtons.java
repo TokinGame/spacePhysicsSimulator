@@ -19,8 +19,12 @@ public class InputButtons extends Group {
 
     MyLabel var;
 
+    MathStage mathStage;
+
     public InputButtons(MathStage stage) {
         setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+
+        mathStage = stage;
 
         //TODO add gombok
 
@@ -136,6 +140,7 @@ public class InputButtons extends Group {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 hide();
+                mathStage.disableButtons();
             }
         });
 
