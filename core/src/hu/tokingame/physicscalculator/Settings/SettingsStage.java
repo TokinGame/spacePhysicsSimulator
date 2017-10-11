@@ -33,7 +33,7 @@ public class SettingsStage extends MyStage {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
-        addActor(new MyTextButton("vissza he", Assets.manager.get(Assets.STEELBUTTON), true){
+        addActor(new MyTextButton("vissza he"){
             @Override
             protected void init() {
                 super.init();
@@ -45,11 +45,13 @@ public class SettingsStage extends MyStage {
                         game.setScreenBackByStackPop();
                     }
                 });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
 
 
-        addActor(new MyTextButton("Kell zene?", Assets.manager.get(Assets.STEELBUTTON), true){
+        addActor(new MyTextButton("Kell zene?"){
             @Override
             protected void init() {
                 super.init();

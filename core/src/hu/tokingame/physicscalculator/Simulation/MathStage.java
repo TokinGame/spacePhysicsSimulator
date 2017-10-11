@@ -53,7 +53,7 @@ public class MathStage extends MyStage {
         inputButtons.setPosition(1280,0);
 
 
-        addActor(new MyTextButton("nem", Assets.manager.get(Assets.STEELBUTTON), true){
+        addActor(new MyTextButton("nem"){
             @Override
             protected void init() {
                 super.init();
@@ -65,6 +65,8 @@ public class MathStage extends MyStage {
                         game.setScreenBackByStackPop();
                     }
                 });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
         addActor(szam1 = new MyLabel("", MyLabel.style));
@@ -74,7 +76,7 @@ public class MathStage extends MyStage {
 
 
 
-        addActor(szamol = new MyTextButton("Számolaáss", Assets.manager.get(Assets.STEELBUTTON), true){
+        addActor(szamol = new MyTextButton("Számolaáss"){
             @Override
             protected void init() {
                 super.init();
@@ -97,6 +99,8 @@ public class MathStage extends MyStage {
 
                     }
                 });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
 

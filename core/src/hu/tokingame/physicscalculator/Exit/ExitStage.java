@@ -56,7 +56,7 @@ public class ExitStage extends MyStage {
         addActor(uzi=new MyLabel("Biztosan hátra akarod hagyni az űrkutatást?",MyLabel.style));
         uzi.setPosition(Globals.WORLD_WIDTH/2-uzi.getWidth()/2f, Globals.WORLD_HEIGHT/2-uzi.getHeight()/2f+200);
 
-        addActor(new MyTextButton("Nem", Assets.manager.get(Assets.STEELBUTTON), true){
+        addActor(new MyTextButton("Nem"){
             @Override
             protected void init() {
                 super.init();
@@ -68,10 +68,12 @@ public class ExitStage extends MyStage {
                         game.setScreen(new MenuScreen(game), true);
                     }
                 });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
 
-        addActor(new MyTextButton("Igen", Assets.manager.get(Assets.STEELBUTTON), true){
+        addActor(new MyTextButton("Igen"){
             @Override
             protected void init() {
                 super.init();
@@ -84,6 +86,8 @@ public class ExitStage extends MyStage {
                         System.exit(0);
                     }
                 });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
 
