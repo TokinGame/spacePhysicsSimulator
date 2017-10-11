@@ -13,6 +13,7 @@ import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.MyGdxGame;
+import hu.tokingame.physicscalculator.Simulation.MathScreen;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -47,6 +48,23 @@ public class SettingsStage extends MyStage {
             }
         });
 
+
+        addActor(new MyTextButton("Kell zene?", Assets.manager.get(Assets.STEELBUTTON), true){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 450);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new MathScreen(game, 1), true);
+                    }
+                });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
+            }
+        });
 
 
     }
