@@ -42,7 +42,7 @@ public class MenuStage extends MyStage {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
-        addActor(new MyTextButton("Egy"){
+        addActor(new MyTextButton("Egy", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();
@@ -56,7 +56,7 @@ public class MenuStage extends MyStage {
                 });
             }
         });
-        addActor(new MyTextButton("Kettő"){
+        addActor(new MyTextButton("Kettő", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();
@@ -71,7 +71,7 @@ public class MenuStage extends MyStage {
             }
         });
 
-        addActor(new MyTextButton("nem"){
+        addActor(new MyTextButton("nem", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();
@@ -87,7 +87,7 @@ public class MenuStage extends MyStage {
         });
 
 
-        addActor(new MyTextButton("Exit"){
+        addActor(new MyTextButton("Kilépés", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();

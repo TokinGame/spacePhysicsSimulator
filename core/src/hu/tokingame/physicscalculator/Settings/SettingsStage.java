@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
@@ -31,7 +32,7 @@ public class SettingsStage extends MyStage {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
-        addActor(new MyTextButton("vissza he"){
+        addActor(new MyTextButton("vissza he", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();

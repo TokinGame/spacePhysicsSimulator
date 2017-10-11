@@ -53,7 +53,7 @@ public class MathStage extends MyStage {
         inputButtons.setPosition(1280,0);
 
 
-        addActor(new MyTextButton("nem"){
+        addActor(new MyTextButton("nem", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();
@@ -74,7 +74,7 @@ public class MathStage extends MyStage {
 
 
 
-        addActor(szamol = new MyTextButton("Számolaáss"){
+        addActor(szamol = new MyTextButton("Számolaáss", Assets.manager.get(Assets.STEELBUTTON), true){
             @Override
             protected void init() {
                 super.init();
