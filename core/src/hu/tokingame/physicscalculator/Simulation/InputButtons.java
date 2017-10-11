@@ -145,8 +145,7 @@ public class InputButtons extends Group {
         if(var != null){
             if(var.getText().length() < Globals.maximumInputLength){
                 if(t.equals("0")){
-                    if(var.getText().equals(" ") || var.getText().equals("")) var.setText("");
-                    else var.setText(var.getText()+t);
+                    if(var.getText().length() != 0) var.setText(var.getText()+t);
                 }else {
                     var.setText(var.getText()+t);
                 }
