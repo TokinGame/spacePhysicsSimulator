@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.FloatAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -13,6 +14,8 @@ import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.MyGdxGame;
+import hu.tokingame.physicscalculator.Physics.Calculator;
+import hu.tokingame.physicscalculator.Settings.SettingsScreen;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -22,9 +25,10 @@ public class MathStage extends MyStage {
 
     float elapsedtime = 0;
 
-    MyLabel szam1, szam2, eredmeny1, eredmeny2;
-    MyTextButton szovegcucc, szovegcucc2;
+    MyLabel szam1, szam2, szam3, eredmeny1, eredmeny2;
+    MyTextButton szovegcucc, szovegcucc2, szamol;
     InputButtons inputButtons;
+
     float var1 = 0, var2 = 0, var3 = 0, var4 = 0;
 
     int rand(int a, int b){
@@ -67,8 +71,31 @@ public class MathStage extends MyStage {
         });
         addActor(szam1 = new MyLabel("", MyLabel.style));
         addActor(szam2 = new MyLabel("", MyLabel.style));
+        addActor(szam3 = new MyLabel("", MyLabel.style));
         addActor(eredmeny1 = new MyLabel("Erő: "+var3+" n", MyLabel.style));
         addActor(eredmeny2 = new MyLabel("Szög: "+var4+" °", MyLabel.style));
+
+
+        addActor(szamol = new MyTextButton("szamol"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 10);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        try {
+                            float[] fasz = Calculator.calcAlpha(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
+                            szamol.setText(fasz[0] + " fasz " + fasz[1]);
+                        }catch (NumberFormatException e){
+                            szamol.setText("Fogyatékos geci vagy bazdmeg nehezdre esik kitölteni 3 retkes dobozt te faszkalap");
+                        }
+
+                    }
+                });
+            }
+        });
 
 
         addActor(szovegcucc = new MyTextButton("Távolság: ", null));
@@ -86,8 +113,10 @@ public class MathStage extends MyStage {
         if(mode == 1){
             szam1.setPosition(300, 600);
             szam2.setPosition(300, 500);
+            szam3.setPosition(300, 400);
             szam1.setSize(210, 60);
             szam2.setSize(210, 60);
+            szam3.setSize(210, 60);
             eredmeny1.setPosition(100, 200);
             eredmeny2.setPosition(100, 100);
             szovegcucc.addListener(new ClickListener(){
