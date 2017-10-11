@@ -21,7 +21,7 @@ public class MathStage extends MyStage {
 
     float elapsedtime = 0;
 
-    MyLabel szam1, szam2, szoveg3, szoveg4;
+    MyLabel szam1, szam2, eredmeny1, eredmeny2;
     InputButtons inputButtons;
     float var1 = 0, var2 = 0, var3 = 0, var4 = 0;
 
@@ -63,10 +63,10 @@ public class MathStage extends MyStage {
                 });
             }
         });
-        addActor(szam1 = new MyLabel(" ", MyLabel.style));
-        addActor(szam2 = new MyLabel(" ", MyLabel.style));
-        addActor(szoveg3 = new MyLabel("Távolság: "+var3+" m", MyLabel.style));
-        addActor(szoveg4 = new MyLabel("Magasság: "+var4+" m", MyLabel.style));
+        addActor(szam1 = new MyLabel("", MyLabel.style));
+        addActor(szam2 = new MyLabel("", MyLabel.style));
+        addActor(eredmeny1 = new MyLabel("Távolság: "+var3+" m", MyLabel.style));
+        addActor(eredmeny2 = new MyLabel("Magasság: "+var4+" m", MyLabel.style));
 
         MyLabel szovegcucc;
         addActor(szovegcucc = new MyLabel("Erő: ", MyLabel.style));
@@ -74,13 +74,19 @@ public class MathStage extends MyStage {
         MyLabel szovegcucc2;
         addActor(szovegcucc2 = new MyLabel("Szög: ", MyLabel.style));
         szovegcucc2.setPosition(50, 500);
+        MyLabel ered;
+        addActor(ered = new MyLabel("Eredmények: ", MyLabel.style));
+        ered.setPosition(50, 300);
+
 
 
         if(mode == 1){
             szam1.setPosition(200, 600);
             szam2.setPosition(200, 500);
-            szoveg3.setPosition(100, 300);
-            szoveg4.setPosition(100, 200);
+            szam1.setSize(210, 60);
+            szam2.setSize(210, 60);
+            eredmeny1.setPosition(100, 200);
+            eredmeny2.setPosition(100, 100);
             szovegcucc.addListener(new ClickListener(){
                 @Override
                 public void clicked(InputEvent event, float x, float y) {

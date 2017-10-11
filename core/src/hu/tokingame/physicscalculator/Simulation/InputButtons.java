@@ -143,7 +143,7 @@ public class InputButtons extends Group {
 
     void iras(String t){
         if(var != null){
-            if(var.getText().length() <= Globals.maximumInputLength){
+            if(var.getText().length() < Globals.maximumInputLength){
                 if(t.equals("0")){
                     if(var.getText().equals(" ") || var.getText().equals("")) var.setText("");
                     else var.setText(var.getText()+t);
@@ -153,9 +153,6 @@ public class InputButtons extends Group {
             }
         }
     }
-
-
-
 
 
 
