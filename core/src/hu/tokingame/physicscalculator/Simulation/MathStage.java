@@ -92,6 +92,20 @@ public class MathStage extends MyStage {
                                 return;
                             }else{
                                 eredmeny.setText(nem[0] + " koz " + nem[1]);
+                                addActor(new MyTextButton("Szimulálás"){
+                                    @Override
+                                    protected void init() {
+                                        super.init();
+                                        setPosition(500, 20);
+                                        addListener(new ClickListener(){
+                                            @Override
+                                            public void clicked(InputEvent event, float x, float y) {
+                                                super.clicked(event, x, y);
+                                                game.setScreen(new SimulationScreen(game));
+                                            }
+                                        });
+                                    }
+                                });
                             }
                         }catch (NumberFormatException e){
                             eredmeny.setText("Spanish inquisition");
