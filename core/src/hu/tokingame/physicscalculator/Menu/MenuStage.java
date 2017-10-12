@@ -42,7 +42,7 @@ public class MenuStage extends MyStage {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
-        addActor(new MyTextButton("Egy"){
+        addActor(new MyTextButton("Kilövés"){
             @Override
             protected void init() {
                 super.init();
@@ -58,24 +58,9 @@ public class MenuStage extends MyStage {
                 enableTexture(true);
             }
         });
-        addActor(new MyTextButton("Kettő"){
-            @Override
-            protected void init() {
-                super.init();
-                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 350);
-                addListener(new ClickListener(){
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        super.clicked(event, x, y);
-                        game.setScreen(new MathScreen(game,2), true);
-                    }
-                });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
-                enableTexture(true);
-            }
-        });
 
-        addActor(new MyTextButton("segg"){
+
+        addActor(new MyTextButton("beállítások"){
             @Override
             protected void init() {
                 super.init();
