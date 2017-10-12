@@ -37,6 +37,8 @@ public class MathStage extends MyStage {
 
     float[] vegeredmeny = new float[2];
 
+    Calculator calculator;
+
 
     MathStage stage;
 
@@ -47,6 +49,13 @@ public class MathStage extends MyStage {
         this.mode = mode;
         Gdx.input.setCatchBackKey(true);
 
+        calculator = new Calculator(){
+            @Override
+            protected void onChanged() {
+                super.onChanged();
+                //Todo frissíteni a staget
+            }
+        };
 
         stage.addActor(inputButtons = new InputButtons(stage));
         inputButtons.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
@@ -86,30 +95,21 @@ public class MathStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         try {
-                            float[] nem = Calculator.calcAlpha(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
-                            if (nem[0] == (float)-666.0) {
+                            //float[] nem = Calculator.calcAlpha(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
+                            calculator.set(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
+                            /*if (nem[0] == (float)-666.0) {
                                 eredmeny.setText("Látom te is annyira értesz a fizikához mint mi.");
                                 return;
                             }else{
                                 eredmeny.setText(nem[0] + " koz " + nem[1]);
-                                addActor(new MyTextButton("Szimulálás"){
-                                    @Override
-                                    protected void init() {
-                                        super.init();
-                                        setPosition(500, 20);
-                                        addListener(new ClickListener(){
-                                            @Override
-                                            public void clicked(InputEvent event, float x, float y) {
-                                                super.clicked(event, x, y);
-                                                game.setScreen(new SimulationScreen(game));
-                                            }
-                                        });
-                                    }
-                                });
-                            }
+                            }*/
+                            eredmeny.setText(calculator.getAlpha()[0] + " koz " + calculator.getAlpha()[1]);
                         }catch (NumberFormatException e){
                             eredmeny.setText("Spanish inquisition");
+                        }catch (Exception e){
+                            eredmeny.setText("Hibás adat, 666");
                         }
+
 
                     }
                 });
