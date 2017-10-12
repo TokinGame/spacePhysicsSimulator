@@ -78,14 +78,26 @@ public class Calculator {
 
     }
 
-    public float getHeight(float time, int index){
+    public float getHeight(float time, int index) throws Exception{
         //// TODO: 2017. 10. 12. megírni, hogy egy adott időpontban milyen magasan van
-        throw new NotImplementedException();
+        float a = 0f;
+        switch (index){
+            case 1: a = alpha[0]; break;
+            case 2: a = alpha[1]; break;
+            default: throw new Exception("Huehue nem 1 és 2 között van");
+        }
+        return (float)(v0 * time * Math.cos(a));
     }
 
-    public float getDuration(){
+    public float getDuration(int index) throws Exception{
         // TODO: 2017. 10. 12. Kiszámolni, hogy mennyi idő alatt ér a célponthoz. Az animáció méretezésének a szempontjából fontos.
-        throw new NotImplementedException();
+        float a = 0f;
+        switch (index){
+            case 1: a = alpha[0]; break;
+            case 2: a = alpha[1]; break;
+            default: throw new Exception("Huehue nem 1 és 2 között van");
+        }
+        return (float) (x / (v0 * Math.cos(a)));
     }
 
 
