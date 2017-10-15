@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 
 import hu.tokingame.physicscalculator.BaseClass.MyScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
+import hu.tokingame.physicscalculator.Physics.Calculator;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -14,9 +15,9 @@ public class SimulationScreen extends MyScreen {
 
 
 
-    public SimulationScreen(MyGdxGame game) {
+    public SimulationScreen(MyGdxGame game, Calculator calculator) {
         super(game);
-        simulationStage = new SimulationStage(viewport, spriteBatch, game);
+        simulationStage = new SimulationStage(viewport, spriteBatch, game, calculator);
         Gdx.input.setInputProcessor(simulationStage);
     }
 

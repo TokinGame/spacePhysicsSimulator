@@ -24,7 +24,7 @@ public class MathStage extends MyStage {
     float elapsedtime = 0;
 
     MyLabel szam1, szam2, szam3, eredmeny;
-    MyTextButton szovegcucc, szovegcucc2, szovegcucc3, szamol;
+    MyTextButton szovegcucc, szovegcucc2, szovegcucc3, szamol, szimulal;
     InputButtons inputButtons;
 
     float var1 = 0, var2 = 0, var3 = 0, var4 = 0;
@@ -84,7 +84,23 @@ public class MathStage extends MyStage {
         addActor(eredmeny = new MyLabel("Szög: "+var4+" °", MyLabel.style));
 
 
-
+        addActor(szimulal = new MyTextButton("Szimuláció"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(500, 10);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new SimulationScreen(game, calculator));
+                    }
+                });
+                setVisible(false);
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
+            }
+        });
         addActor(szamol = new MyTextButton("Számolaáss"){
             @Override
             protected void init() {
@@ -104,6 +120,7 @@ public class MathStage extends MyStage {
                                 eredmeny.setText(nem[0] + " koz " + nem[1]);
                             }*/
                             eredmeny.setText(calculator.getAlpha()[0] + " koz " + calculator.getAlpha()[1]);
+                            szimulal.setVisible(true);
                         }catch (NumberFormatException e){
                             eredmeny.setText("Spanish inquisition");
                         }catch (Exception e){
@@ -117,6 +134,8 @@ public class MathStage extends MyStage {
                 enableTexture(true);
             }
         });
+
+
 
 
         addActor(szovegcucc = new MyTextButton("Sebesség: ", null));
