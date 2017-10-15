@@ -82,8 +82,8 @@ public class Calculator {
         //// TODO: 2017. 10. 12. megírni, hogy egy adott időpontban milyen magasan van
         float a = 0f;
         switch (index){
-            case 1: a = alpha[0]; break;
-            case 2: a = alpha[1]; break;
+            case 1: a = (float) Math.toRadians(alpha[0]); break;
+            case 2: a = (float) Math.toRadians(alpha[1]); break;
             default: throw new Exception("Huehue nem 1 és 2 között van");
         }
         return (float)(v0 * time * Math.cos(a));
@@ -93,10 +93,13 @@ public class Calculator {
         // TODO: 2017. 10. 12. Kiszámolni, hogy mennyi idő alatt ér a célponthoz. Az animáció méretezésének a szempontjából fontos.
         float a = 0f;
         switch (index){
-            case 1: a = alpha[0]; break;
-            case 2: a = alpha[1]; break;
+            case 1: a = (float) Math.toRadians(alpha[0]); break;
+            case 2: a = (float) Math.toRadians(alpha[1]); break;
             default: throw new Exception("Huehue nem 1 és 2 között van");
         }
+        System.out.println(v0);
+        System.out.println(x);
+        System.out.println(Math.cos(a));
         return (float) (x / (v0 * Math.cos(a)));
     }
 
