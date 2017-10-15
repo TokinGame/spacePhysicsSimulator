@@ -35,7 +35,7 @@ public class SimulationStage extends MyStage {
     Potato potato;
     Pixmap pixmap;
 
-    int h = 10000;
+    int h = 1000;
 
     int duration, step, dots = 20;
 
