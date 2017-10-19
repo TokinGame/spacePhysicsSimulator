@@ -15,7 +15,7 @@ import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 
 public class InputButtons extends Group {
 
-    MyTextButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, close;
+    MyTextButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, close, delete;
 
     MyLabel var;
 
@@ -39,6 +39,7 @@ public class InputButtons extends Group {
         b9 = new MyTextButton("9");
         b0 = new MyTextButton("0");
         close = new MyTextButton("Bezár");
+        delete = new MyTextButton("Backspace");
 
         b1.setPosition(800, 600);
         b2.setPosition(900, 600);
@@ -51,6 +52,7 @@ public class InputButtons extends Group {
         b9.setPosition(1000, 400);
         b0.setPosition(900, 300);
         close.setPosition(800, 200);
+        delete.setPosition(1000, 200);
 
         addActor(b1);
         addActor(b2);
@@ -63,6 +65,7 @@ public class InputButtons extends Group {
         addActor(b9);
         addActor(b0);
         addActor(close);
+        addActor(delete);
 
 
         b0.addListener(new ClickListener(){
@@ -143,7 +146,13 @@ public class InputButtons extends Group {
                 mathStage.disableButtons();
             }
         });
-
+        delete.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                iras("bsp");
+            }
+        });
     }
 
     void iras(String t){
@@ -151,7 +160,10 @@ public class InputButtons extends Group {
             if(var.getText().length() < Globals.maximumInputLength){
                 if(t.equals("0")){
                     if(var.getText().length() != 0) var.setText(var.getText()+t);
-                }else {
+                }if(t.equals("bsp")){
+                    if(var.getText().length < 1) return;
+                    var.setText(var.getText().substring(0,var.getText().length()-1));
+                } else {
                     var.setText(var.getText()+t);
                 }
             }
