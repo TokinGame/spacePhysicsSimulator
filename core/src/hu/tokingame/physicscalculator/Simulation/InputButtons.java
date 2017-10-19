@@ -177,11 +177,12 @@ public class InputButtons extends Group {
             if(var.getText().length() < Globals.maximumInputLength){
                 if(t.equals("0")){
                     if(var.getText().length() != 0) var.setText(var.getText()+t);
-                }if(t.equals("bsp")){
+                }else {
+                    var.setText(var.getText()+t);
+                }
+                if(t.equals("bsp")){
                     if(var.getText().length < 1) return;
                     var.setText(var.getText().substring(0,var.getText().length()-1));
-                } else {
-                    var.setText(var.getText()+t);
                 }
             }
         }
