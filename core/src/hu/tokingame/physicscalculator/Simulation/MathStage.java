@@ -191,6 +191,37 @@ public class MathStage extends MyStage {
                     szovegcucc3.enableTexture(true);
                 }
             });
+
+            szam1.addListener(new ClickListener(){
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    super.clicked(event, x, y);
+                    inputButtons.show(szam1);
+                    szovegcucc.enableTexture(true);
+                    szovegcucc2.enableTexture(false);
+                    szovegcucc3.enableTexture(false);
+                }
+            });
+            szam2.addListener(new ClickListener(){
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    super.clicked(event, x, y);
+                    inputButtons.show(szam2);
+                    szovegcucc.enableTexture(false);
+                    szovegcucc2.enableTexture(true);
+                    szovegcucc3.enableTexture(false);
+                }
+            });
+            szam3.addListener(new ClickListener(){
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    super.clicked(event, x, y);
+                    inputButtons.show(szam3);
+                    szovegcucc.enableTexture(false);
+                    szovegcucc2.enableTexture(false);
+                    szovegcucc3.enableTexture(true);
+                }
+            });
         }else{
 
         }
