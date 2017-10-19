@@ -26,6 +26,12 @@ public class SimulationStage extends MyStage {
 
     float elapsedtime = 0;
 
+    public float getScale() {
+        return scale;
+    }
+
+    float scale;
+
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
     }
@@ -49,21 +55,50 @@ public class SimulationStage extends MyStage {
 
 
         try{
-            pixmap = new Pixmap(1024, 768, Pixmap.Format.RGBA8888);
-            pixmap.setColor(8, 0, 0, 8);
+            pixmap = new Pixmap(1024, 576, Pixmap.Format.RGBA8888);
+            //pixmap.setColor(1, 1, 1, 1);
+            //pixmap.fill();
+            //pixmap.setColor(8, 0, 0, 8);
         }catch(Exception e){
             e.printStackTrace();
         }
 
 
-        int index = 1;
-        float duration = 0;
+        float duration;
         try {
-            duration = calculator.getDuration(index);
+            scale = Math.min(Math.min(((float)pixmap.getHeight())/calculator.getMaxHeight(1), ((float)pixmap.getWidth())/calculator.getX()), Math.min(((float)pixmap.getHeight())/calculator.getMaxHeight(2), ((float)pixmap.getWidth())/calculator.getX()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("-Scale-");
+        System.out.println(scale);
+        int pmheight = pixmap.getHeight();
+        int pmwidth = pixmap.getWidth();
+        try {
+            float f = 0;
+            duration = calculator.getDuration(1);
             //System.out.println(calculator.getDuration(index));
-            for(float f = 0; f<=duration; f+=duration/1024f){
-                //rajzol(i*step, calculator.getHeight(i, 2));
-                //System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
+            pixmap.setColor(0,1,0,1);
+            for(f = 0; f<=duration; f+=duration/1024f){
+                pixmap.fillCircle((int)(calculator.getWidth(f, 1)*scale), pmheight - (int)(calculator.getHeight(f, 1)*scale), 1);
+            }
+            pixmap.setColor(0,0.2f,0,1);
+            while ((int)(calculator.getWidth(f, 1)*scale)<pmwidth && (int)(calculator.getHeight(f, 1)*scale)>0){
+                f+=duration/1024f;
+                pixmap.fillCircle((int)(calculator.getWidth(f, 1)*scale), pmheight - (int)(calculator.getHeight(f, 1)*scale), 1);
+            }
+
+
+            pixmap.setColor(1,0,0,1);
+            duration = calculator.getDuration(2);
+            for(f = 0; f<=duration; f+=duration/1024f){
+                pixmap.fillCircle((int)(calculator.getWidth(f, 2)*scale), pmheight - (int)(calculator.getHeight(f, 2)*scale), 1);
+            }
+
+            pixmap.setColor(0.2f,0,0,1);
+            while ((int)(calculator.getWidth(f, 2)*scale)<pmwidth && (int)(calculator.getHeight(f, 2)*scale)>0){
+                f+=duration/1024f;
+                pixmap.fillCircle((int)(calculator.getWidth(f, 2)*scale), pmheight - (int)(calculator.getHeight(f, 2)*scale), 1);
             }
 
 
@@ -72,28 +107,32 @@ public class SimulationStage extends MyStage {
         }finally{
             grafikon = new OneSpriteStaticActor(new Texture(pixmap));
             grafikon.setPosition(0,0);
-            grafikon.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+            grafikon.debug();
+            setDebugAll(true);
+            grafikon.setSize(pixmap.getWidth(), pixmap.getHeight());
             addActor(grafikon);
             //addActor(potato = new Potato(0,0));
         }
+/*
+        System.out.println("---------");
+        try {
+            System.out.println(calculator.getDuration(index));
+            System.out.println("---------MAX");
+            System.out.println(calculator.getMaxHeight(index));
+            System.out.println("---------");
+            for(float f = 0; f<=duration; f+=duration/30){
+                System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+*/
 
     }
 
 
 
 
-    void rajzol(double dx, double dy){
-        int x = (int)dx, y = (int)dy;
-
-        pixmap.fillCircle(x, h-y, 10);
-
-
-
-        System.out.println("dot at "+x+";"+y);
-
-
-
-    }
 
 
 

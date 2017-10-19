@@ -16,6 +16,23 @@ public class Calculator {
 
     float v0 = 0f;
     float x = 0f;
+
+    public static float getG() {
+        return g;
+    }
+
+    public float getV0() {
+        return v0;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
     float y = 0f;
     float[] alpha;
 
@@ -108,7 +125,7 @@ public class Calculator {
             default: throw new Exception("Huehue nem 1 és 2 között van");
         }
         float krumpli = (float)((v0 * v0 * Math.sin(a) * Math.sin(a)) / (2 * g));
-        return krumpli < 3 ? krumpli : getHeight(getDuration(index),index);
+        return krumpli > getHeight(getDuration(index),index) ? krumpli : getHeight(getDuration(index),index);
     }
 
     public float getDuration(int index) throws Exception{
@@ -141,20 +158,20 @@ public class Calculator {
 
     */
 
-    public float getMaxHeight(int index){
-        return 40;
-    }
-
     public static void main(String[] args) throws Exception {
-        Calculator calculator = new Calculator(25, 14, 3);
+        Calculator calculator = new Calculator(150, 14, 3);
         System.out.println("---------");
         int index = 1;
         float duration = calculator.getDuration(index);
         System.out.println(calculator.getDuration(index));
+        System.out.println("---------MAX");
         System.out.println(calculator.getMaxHeight(index));
+        System.out.println("---------");
+
         for(float f = 0; f<=duration; f+=duration/30){
             System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
         }
+
     }
 
 
