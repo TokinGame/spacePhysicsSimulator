@@ -86,6 +86,17 @@ public class Calculator {
             case 2: a = (float) Math.toRadians(alpha[1]); break;
             default: throw new Exception("Huehue nem 1 és 2 között van");
         }
+        return (float)(v0 * time * Math.sin(a) - 0.5f * g * time*time);
+    }
+
+    public float getWidth(float time, int index) throws Exception{
+        //// TODO: 2017. 10. 12. megírni, hogy egy adott időpontban milyen magasan van
+        float a = 0f;
+        switch (index){
+            case 1: a = (float) Math.toRadians(alpha[0]); break;
+            case 2: a = (float) Math.toRadians(alpha[1]); break;
+            default: throw new Exception("Huehue nem 1 és 2 között van");
+        }
         return (float)(v0 * time * Math.cos(a));
     }
 
@@ -114,12 +125,21 @@ public class Calculator {
     }
 
     public float calcTimeH(){
-        return dToF((2*v0*Math.sin(alpha))/g);
+        return dToF((2*v0*Math.sin (alpha))/g);
     }
 
     */
 
-
+    public static void main(String[] args) throws Exception {
+        Calculator calculator = new Calculator(25, 14, 3);
+        System.out.println("---------");
+        int index = 2;
+        float duration = calculator.getDuration(index);
+        System.out.println(calculator.getDuration(index));
+        for(float f = 0; f<=duration; f+=duration/30){
+            System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
+        }
+    }
 
 
 }
