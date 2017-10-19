@@ -43,6 +43,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> BUTTONBG = new AssetDescriptor<Texture>("buttonbg.png", Texture.class);
     public static final AssetDescriptor<Texture> STEELBUTTON = new AssetDescriptor<Texture>("steelbutton.png", Texture.class);
     public static final AssetDescriptor<Texture> POTATO = new AssetDescriptor<Texture>("potato.png", Texture.class);
+    public static final AssetDescriptor<Texture> TARGET = new AssetDescriptor<Texture>("snoop.jpg", Texture.class);
 
 
 
@@ -70,6 +71,7 @@ public class Assets {
         manager.load(BUTTONBG);
         manager.load(STEELBUTTON);
         manager.load(POTATO);
+        manager.load(TARGET);
 
 
     }

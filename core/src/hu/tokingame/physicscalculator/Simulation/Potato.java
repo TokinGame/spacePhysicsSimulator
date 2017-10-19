@@ -36,6 +36,11 @@ public class Potato extends OneSpriteStaticActor {
     }
 
     @Override
+    public void setPosition(float x, float y) {
+        super.setPosition(x - this.getWidth()/2f, y - this.getHeight()/2f);
+    }
+
+    @Override
     protected void init() {
         super.init();
 

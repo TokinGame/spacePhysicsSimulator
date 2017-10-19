@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -40,6 +41,7 @@ public class SimulationStage extends MyStage {
     OneSpriteStaticActor grafikon;
     Potato potato1, potato2;
     Pixmap pixmap;
+    Target target;
 
 
     int h = 1000;
@@ -51,7 +53,6 @@ public class SimulationStage extends MyStage {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
         calculator = calc;
-
 
 
         try{
@@ -107,12 +108,17 @@ public class SimulationStage extends MyStage {
         }finally{
             grafikon = new OneSpriteStaticActor(new Texture(pixmap));
             grafikon.setPosition(0,0);
-            grafikon.debug();
-            setDebugAll(true);
+            if(Globals.IS_DEBUG){
+                grafikon.debug();
+                setDebugAll(true);
+            }
+            target = new Target(calculator.getX()*getScale(), calculator.getY()*getScale());
+            addActor(target);
             grafikon.setSize(pixmap.getWidth(), pixmap.getHeight());
             addActor(grafikon);
             addActor(potato1 = new Potato(0,0));
             addActor(potato2 = new Potato(0,0));
+
         }
 /*
         System.out.println("---------");
