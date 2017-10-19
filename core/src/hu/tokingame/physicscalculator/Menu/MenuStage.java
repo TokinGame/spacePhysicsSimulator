@@ -19,8 +19,10 @@ import hu.tokingame.physicscalculator.BaseClass.OneSpriteActor;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.Exit.ExitScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
+import hu.tokingame.physicscalculator.Physics.Calculator;
 import hu.tokingame.physicscalculator.Settings.SettingsScreen;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
+import hu.tokingame.physicscalculator.Simulation.SimulationScreen;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -59,8 +61,33 @@ public class MenuStage extends MyStage {
             }
         });
 
+        addActor(new MyTextButton("Debug"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 350);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        try{
+                            Calculator clac = new Calculator(15f,5f,3f);
+                            game.setScreen(new SimulationScreen(game, clac), true);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
+            }
+        });
 
+        if(Globals.IS_DEBUG){
+
+        }
         addActor(new MyTextButton("beállítások"){
+
             @Override
             protected void init() {
                 super.init();

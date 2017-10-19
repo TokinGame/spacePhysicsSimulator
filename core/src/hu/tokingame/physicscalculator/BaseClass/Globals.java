@@ -15,5 +15,6 @@ public class Globals {
 
     public static final int maximumInputLength = 8;
 
+    public static final boolean IS_DEBUG = true;
 
 }
