@@ -1,13 +1,20 @@
 package hu.tokingame.physicscalculator.Simulation;
 
-import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveByAction;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
+
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
 /**
  * Created by davimatyi on 2017. 10. 04..
@@ -25,7 +32,12 @@ public class InputButtons extends Group {
 
     private int initialX = Globals.WORLD_WIDTH;
 
+    private final InputButtons btns = this;
+
+
+
     public InputButtons(MathStage stage) {
+        this.setVisible(false);
         setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
 
         mathStage = stage;
@@ -179,46 +191,39 @@ public class InputButtons extends Group {
     @Override
     public void act(float delta) {
         super.act(delta);
-        //System.out.println("act");
-        if(kellMozgatni && this.getX() > 1){
-            mozgat();
-            System.out.println("");
-            System.out.println("kezd");
-            System.out.println("");
-        }
-        if(kellMozgatni && this.getX() < 1){
-            kellMozgatni = false;
-            System.out.println("");
-            System.out.println("vege");
-            System.out.println("");
-        }
     }
 
     public void show(MyLabel szoveg){
-        //this.setPosition(0, 0);
         var = szoveg;
-        kellMozgatni = true;
-        System.out.println("");
-        System.out.println("most");
-        System.out.println(kellMozgatni);
-        System.out.println("");
-        System.out.println("-------x");
-        System.out.println(this.getX());
-        System.out.println("-------");
-        System.out.println("-------y");
-        System.out.println(this.getY());
-        System.out.println("-------");
+        if(!this.isVisible()){
+            this.setVisible(true);
+            this.setPosition(Globals.WORLD_WIDTH-750,0);
+            final MoveToAction moveToAction = new MoveToAction();
+            moveToAction.setPosition(0,0);
+            moveToAction.setDuration(1.2f);
+            this.addAction(sequence(moveToAction, run(new Runnable() {
+                @Override
+                public void run() {
+                    btns.removeAction(moveToAction);
+                }
+            })));
+
+        }
     }
 
-    private void mozgat(){
-        this.setPosition(initialX, 0);
-        if(initialX < 10) initialX = 0;
-        else initialX -= 10;
-        System.out.println("mozgat " + initialX);
-    }
 
     public void hide(){
-        this.setPosition(1280, 0);
+        final MoveToAction moveToAction = new MoveToAction();
+        moveToAction.setPosition(Globals.WORLD_WIDTH-750,0);
+        moveToAction.setDuration(1.2f);
+        this.addAction(sequence(moveToAction, run(new Runnable() {
+            @Override
+            public void run() {
+                btns.removeAction(moveToAction);
+                btns.setVisible(false);
+            }
+        })));
+
     }
 
 }

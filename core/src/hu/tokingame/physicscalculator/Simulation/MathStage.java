@@ -121,13 +121,12 @@ public class MathStage extends MyStage {
                             }*/
                             eredmeny.setText(calculator.getAlpha()[0] + " koz " + calculator.getAlpha()[1]);
                             szimulal.setVisible(true);
+                            successfulCalculation();
                         }catch (NumberFormatException e){
                             eredmeny.setText("Spanish inquisition");
                         }catch (Exception e){
                             eredmeny.setText("Hibás adat, 666");
                         }
-
-
                     }
                 });
                 setTexture(Assets.manager.get(Assets.STEELBUTTON));
@@ -262,6 +261,11 @@ public class MathStage extends MyStage {
         szovegcucc.enableTexture(false);
         szovegcucc2.enableTexture(false);
         szovegcucc3.enableTexture(false);
+    }
+
+    public void successfulCalculation(){
+        inputButtons.hide();
+        disableButtons();
     }
 
     public void init(){
