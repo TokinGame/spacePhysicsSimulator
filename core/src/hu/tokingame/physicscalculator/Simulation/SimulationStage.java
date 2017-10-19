@@ -35,9 +35,10 @@ public class SimulationStage extends MyStage {
     Potato potato;
     Pixmap pixmap;
 
+
     int h = 1000;
 
-    int duration, step, dots = 20;
+    int duration, step, dots = 200;
 
     public SimulationStage(Viewport viewport, Batch batch, final MyGdxGame game, Calculator calc) {
 
@@ -48,7 +49,7 @@ public class SimulationStage extends MyStage {
 
 
         try{
-            duration = (int)(calculator.getDuration(1)*1000);
+            duration = (int)(calculator.getDuration(2)*1000);
             System.out.println(duration);
             step = duration/dots;
 
@@ -61,9 +62,15 @@ public class SimulationStage extends MyStage {
 
         for(int i = 0; i < dots; i++){
             try{
-                rajzol(i*step, calculator.getHeight(i, 1));
+                rajzol(i*step, calculator.getHeight(i, 2));
             }catch(Exception e){
                 e.printStackTrace();
+            }finally{
+                grafikon = new OneSpriteStaticActor(new Texture(pixmap));
+                grafikon.setPosition(0,0);
+                grafikon.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+                addActor(grafikon);
+                //addActor(potato = new Potato(0,0));
             }
         }
 
@@ -79,10 +86,7 @@ public class SimulationStage extends MyStage {
 
         pixmap.fillCircle(x, h-y, 10);
 
-        grafikon = new OneSpriteStaticActor(new Texture(pixmap));
-        grafikon.setPosition(0,0);
-        grafikon.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
-        addActor(grafikon);
+
 
         System.out.println("dot at "+x+";"+y);
 

@@ -15,13 +15,14 @@ public class Potato extends OneSpriteStaticActor {
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
     }
-    int x;
+    int x = rand(-10,10);
 
     public Potato(float x, float y) {
         super(Assets.manager.get(Assets.POTATO));
-        setPosition(x, y);
         setSize(50, 50);
-        x = rand(-10, 10);
+        setOrigin(25, 25);
+        setPosition(x, y);
+
     }
 
     @Override
@@ -29,6 +30,7 @@ public class Potato extends OneSpriteStaticActor {
         super.act(delta);
         elapsedTime += delta;
         setRotation(elapsedTime*x);
+
     }
 
     @Override
