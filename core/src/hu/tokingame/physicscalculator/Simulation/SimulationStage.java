@@ -165,20 +165,6 @@ public class SimulationStage extends MyStage {
     }
 
     public void init(){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         refresh();
     }
 }

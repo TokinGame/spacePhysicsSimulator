@@ -13,6 +13,8 @@ import hu.tokingame.physicscalculator.Loading.BetoltoScreen;
 
 public class MyGdxGame extends Game {
 
+	// TODO: 10/19/2017 Meg kell keresni hogy mért dobja ezt a hibát:  AL lib: (EE) alc_cleanup: 1 device not closed
+
 	public final Stack<Class> backButtonStack = new Stack();
 
 	@Override

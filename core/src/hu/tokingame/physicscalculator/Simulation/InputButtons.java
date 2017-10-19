@@ -21,6 +21,10 @@ public class InputButtons extends Group {
 
     MathStage mathStage;
 
+    private boolean kellMozgatni = false;
+
+    private int initialX = Globals.WORLD_WIDTH;
+
     public InputButtons(MathStage stage) {
         setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
 
@@ -172,16 +176,45 @@ public class InputButtons extends Group {
     }
 
 
-
-
-
-
-
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        //System.out.println("act");
+        if(kellMozgatni && this.getX() > 1){
+            mozgat();
+            System.out.println("");
+            System.out.println("kezd");
+            System.out.println("");
+        }
+        if(kellMozgatni && this.getX() < 1){
+            kellMozgatni = false;
+            System.out.println("");
+            System.out.println("vege");
+            System.out.println("");
+        }
+    }
 
     public void show(MyLabel szoveg){
-        this.setPosition(0, 0);
+        //this.setPosition(0, 0);
         var = szoveg;
+        kellMozgatni = true;
+        System.out.println("");
+        System.out.println("most");
+        System.out.println(kellMozgatni);
+        System.out.println("");
+        System.out.println("-------x");
+        System.out.println(this.getX());
+        System.out.println("-------");
+        System.out.println("-------y");
+        System.out.println(this.getY());
+        System.out.println("-------");
+    }
 
+    private void mozgat(){
+        this.setPosition(initialX, 0);
+        if(initialX < 10) initialX = 0;
+        else initialX -= 10;
+        System.out.println("mozgat " + initialX);
     }
 
     public void hide(){
