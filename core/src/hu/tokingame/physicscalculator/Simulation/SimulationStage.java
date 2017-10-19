@@ -38,7 +38,7 @@ public class SimulationStage extends MyStage {
 
     Calculator calculator;
     OneSpriteStaticActor grafikon;
-    Potato potato;
+    Potato potato1, potato2;
     Pixmap pixmap;
 
 
@@ -111,7 +111,8 @@ public class SimulationStage extends MyStage {
             setDebugAll(true);
             grafikon.setSize(pixmap.getWidth(), pixmap.getHeight());
             addActor(grafikon);
-            //addActor(potato = new Potato(0,0));
+            addActor(potato1 = new Potato(0,0));
+            addActor(potato2 = new Potato(0,0));
         }
 /*
         System.out.println("---------");
@@ -161,6 +162,17 @@ public class SimulationStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
         elapsedtime += delta;
+
+        try {
+            if(elapsedtime < calculator.getDuration(1)){
+                potato1.setPosition(calculator.getWidth(elapsedtime, 1)*scale, calculator.getHeight(elapsedtime, 1)*scale);
+            }else potato1.stopSpinning();
+            if(elapsedtime < calculator.getDuration(2)){
+                potato2.setPosition(calculator.getWidth(elapsedtime, 2)*scale, calculator.getHeight(elapsedtime, 2)*scale);
+            }else potato2.stopSpinning();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
