@@ -12,7 +12,7 @@ import static hu.tokingame.physicscalculator.Physics.MathUtils.fToD;
  */
 
 public class Calculator {
-    public static final float g = dToF(9.81);
+    public static final float g = (float)(9.81);
 
     float v0 = 0f;
     float x = 0f;
@@ -100,6 +100,17 @@ public class Calculator {
         return (float)(v0 * time * Math.cos(a));
     }
 
+    public float getMaxHeight(int index) throws Exception{
+        float a = 0f;
+        switch (index){
+            case 1: a = (float) Math.toRadians(alpha[0]); break;
+            case 2: a = (float) Math.toRadians(alpha[1]); break;
+            default: throw new Exception("Huehue nem 1 és 2 között van");
+        }
+        float krumpli = (float)((v0 * v0 * Math.sin(a) * Math.sin(a)) / (2 * g));
+        return krumpli < 3 ? krumpli : getHeight(getDuration(index),index);
+    }
+
     public float getDuration(int index) throws Exception{
         // TODO: 2017. 10. 12. Kiszámolni, hogy mennyi idő alatt ér a célponthoz. Az animáció méretezésének a szempontjából fontos.
         float a = 0f;
@@ -140,6 +151,7 @@ public class Calculator {
         int index = 1;
         float duration = calculator.getDuration(index);
         System.out.println(calculator.getDuration(index));
+        System.out.println(calculator.getMaxHeight(index));
         for(float f = 0; f<=duration; f+=duration/30){
             System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
         }
