@@ -49,32 +49,33 @@ public class SimulationStage extends MyStage {
 
 
         try{
-            duration = (int)(calculator.getDuration(2)*1000);
-            System.out.println(duration);
-            step = duration/dots;
-
-            pixmap = new Pixmap(duration, h, Pixmap.Format.RGBA8888);
+            pixmap = new Pixmap(1024, 768, Pixmap.Format.RGBA8888);
             pixmap.setColor(8, 0, 0, 8);
         }catch(Exception e){
             e.printStackTrace();
         }
 
 
-        for(int i = 0; i < dots; i++){
-            try{
-                rajzol(i*step, calculator.getHeight(i, 2));
-            }catch(Exception e){
-                e.printStackTrace();
-            }finally{
-                grafikon = new OneSpriteStaticActor(new Texture(pixmap));
-                grafikon.setPosition(0,0);
-                grafikon.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
-                addActor(grafikon);
-                //addActor(potato = new Potato(0,0));
+        int index = 1;
+        float duration = 0;
+        try {
+            duration = calculator.getDuration(index);
+            //System.out.println(calculator.getDuration(index));
+            for(float f = 0; f<=duration; f+=duration/1024f){
+                //rajzol(i*step, calculator.getHeight(i, 2));
+                //System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
             }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            grafikon = new OneSpriteStaticActor(new Texture(pixmap));
+            grafikon.setPosition(0,0);
+            grafikon.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+            addActor(grafikon);
+            //addActor(potato = new Potato(0,0));
         }
-
-
 
     }
 

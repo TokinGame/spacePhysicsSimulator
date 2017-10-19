@@ -130,10 +130,14 @@ public class Calculator {
 
     */
 
+    public float getMaxHeight(int index){
+        return 40;
+    }
+
     public static void main(String[] args) throws Exception {
         Calculator calculator = new Calculator(25, 14, 3);
         System.out.println("---------");
-        int index = 2;
+        int index = 1;
         float duration = calculator.getDuration(index);
         System.out.println(calculator.getDuration(index));
         for(float f = 0; f<=duration; f+=duration/30){
