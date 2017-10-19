@@ -18,7 +18,7 @@ public class Potato extends OneSpriteStaticActor {
     int x;
 
     public Potato(float x, float y) {
-        super(Assets.manager.get(Assets.STEELBUTTON));
+        super(Assets.manager.get(Assets.POTATO));
         setPosition(x, y);
         setSize(50, 50);
         x = rand(-10, 10);
