@@ -16,7 +16,7 @@ public class Potato extends OneSpriteStaticActor {
         return (int)(Math.random()*(b-a+1)+a);
     }
     int x = rand(-100,100);
-    boolean spinning = true;
+    boolean spinning = false;
 
     public Potato(float x, float y) {
         super(Assets.manager.get(Assets.POTATO));
@@ -26,6 +26,7 @@ public class Potato extends OneSpriteStaticActor {
     public void stopSpinning(){
         spinning = false;
     }
+    public void startSpinning(){ spinning = true;}
 
     @Override
     public void act(float delta) {
@@ -44,5 +45,9 @@ public class Potato extends OneSpriteStaticActor {
     protected void init() {
         super.init();
 
+    }
+
+    boolean isSpinning(){
+        return spinning;
     }
 }

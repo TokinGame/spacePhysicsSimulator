@@ -33,6 +33,8 @@ public class Calculator {
         return y;
     }
 
+
+
     float y = 0f;
     float[] alpha;
 

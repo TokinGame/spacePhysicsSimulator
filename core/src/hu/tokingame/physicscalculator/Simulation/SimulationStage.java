@@ -31,7 +31,7 @@ public class SimulationStage extends MyStage {
         return scale;
     }
 
-    float scale;
+    float scale, p1finished;
 
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
@@ -42,13 +42,14 @@ public class SimulationStage extends MyStage {
     Potato potato1, potato2;
     Pixmap pixmap;
     Target target;
+    OneSpriteStaticActor cannon;
 
 
     int h = 1000;
 
     int duration, step, dots = 200;
 
-    public SimulationStage(Viewport viewport, Batch batch, final MyGdxGame game, Calculator calc) {
+    public SimulationStage(Viewport viewport, Batch batch, final MyGdxGame game, final Calculator calc) {
 
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
@@ -118,6 +119,16 @@ public class SimulationStage extends MyStage {
             addActor(grafikon);
             addActor(potato1 = new Potato(0,0));
             addActor(potato2 = new Potato(0,0));
+            addActor(cannon = new OneSpriteStaticActor(Assets.manager.get(Assets.CANNON)){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(0, 0);
+                    setSize(100, 100);
+                    setRotation(calc.getAlpha()[0]);
+                }
+            });
+            potato1.startSpinning();
 
         }
 /*
@@ -170,12 +181,32 @@ public class SimulationStage extends MyStage {
         elapsedtime += delta;
 
         try {
-            if(elapsedtime < calculator.getDuration(1)){
+            /*if(elapsedtime < calculator.getDuration(1)){
                 potato1.setPosition(calculator.getWidth(elapsedtime, 1)*scale, calculator.getHeight(elapsedtime, 1)*scale);
-            }else potato1.stopSpinning();
-            if(elapsedtime < calculator.getDuration(2)){
+            }else {
+                if((elapsedtime + calculator.getDuration(1)) < (calculator.getDuration(2) + calculator.getDuration(1))){
+                    potato2.setPosition(calculator.getWidth(elapsedtime, 2)*scale, calculator.getHeight(elapsedtime, 2)*scale);
+                }else potato2.stopSpinning();
+                cannon.setRotation(calculator.getAlpha()[1]);
+                potato1.stopSpinning();
+
+            }*/
+
+            if(potato1.isSpinning()){
+                potato1.setPosition(calculator.getWidth(elapsedtime, 1)*scale, calculator.getHeight(elapsedtime, 1)*scale);
+                if(elapsedtime > calculator.getDuration(1)) {
+                    potato1.stopSpinning();
+                    elapsedtime = 0;
+                    potato2.startSpinning();
+                    cannon.setRotation(calculator.getAlpha()[1]);
+                }
+            }
+            if(potato2.isSpinning()){
                 potato2.setPosition(calculator.getWidth(elapsedtime, 2)*scale, calculator.getHeight(elapsedtime, 2)*scale);
-            }else potato2.stopSpinning();
+                if(elapsedtime > calculator.getDuration(2)){
+                    potato2.stopSpinning();
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
