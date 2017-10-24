@@ -1,5 +1,8 @@
 package hu.tokingame.physicscalculator.BaseClass;
 
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.graphics.Texture;
+
 /**
  * Created by M on 10/14/2016.
  */
@@ -16,5 +19,7 @@ public class Globals {
     public static final int maximumInputLength = 8;
 
     public static final boolean IS_DEBUG = true;
+
+    public static AssetDescriptor<Texture> bg = Assets.POTATO;
 
 }
