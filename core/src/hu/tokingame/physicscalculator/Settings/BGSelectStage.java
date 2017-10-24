@@ -6,8 +6,11 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ArraySelection;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.util.ArrayList;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
@@ -31,6 +34,8 @@ public class BGSelectStage extends MyStage {
     //// TODO: 10/24/2017 Normális hátterek
     private AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON};
 
+    private ArrayList<BGShowcaseActor> actors = new ArrayList<BGShowcaseActor>();
+
     private int index = 0;
 
     private OneSpriteStaticActor bgActor;
@@ -38,23 +43,35 @@ public class BGSelectStage extends MyStage {
     private MyTextButton leftButton, rightButton;
 
     public BGSelectStage(Viewport viewport, Batch batch, final MyGdxGame game) {
-
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
+        this.setDebugAll(true);
 
-        addActor(bgActor = new OneSpriteStaticActor(Assets.manager.get(bgs[index])));
+        addActor(bgActor = new OneSpriteStaticActor(Assets.manager.get(bgs[index])){
+            @Override
+            protected void init() {
+                super.init();
+                this.setPosition(0,0);
+                this.setSize(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT);
+            }
+        });
+
+        addBGShowCase();
+
+        actors.get(index).setVisible(true);
 
         addActor(new MyTextButton("<--"){
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH/2-250, Globals.WORLD_HEIGHT/2);
+                setPosition(Globals.WORLD_WIDTH/2-250-this.getWidth(), Globals.WORLD_HEIGHT/2 - this.getHeight()/2);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         if(index - 1 >= 0){
                             index--;
+                            actors.get(index + 1).hide(Globals.WORLD_WIDTH,Globals.WORLD_WIDTH);
                             changeBg();
                         }else{
 
@@ -70,13 +87,14 @@ public class BGSelectStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH/2+250, Globals.WORLD_HEIGHT/2);
+                setPosition(Globals.WORLD_WIDTH/2+250, Globals.WORLD_HEIGHT/2 - this.getHeight()/2);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         if(index + 1 <= bgs.length-1){
                             index++;
+                            actors.get(index-1).hide(0-actors.get(index-1).getWidth(),0);
                             changeBg();
                         }else{
 
@@ -88,6 +106,8 @@ public class BGSelectStage extends MyStage {
             }
         });
 
+
+        addActor(new BGShowcaseActor(Assets.manager.get(bgs[index])));
 
         addActor(new MyTextButton("vissza he"){
             @Override
@@ -110,8 +130,17 @@ public class BGSelectStage extends MyStage {
     }
 
 
+    public void addBGShowCase(){
+        for (AssetDescriptor<Texture> bg: bgs) {
+            BGShowcaseActor actor = new BGShowcaseActor(Assets.manager.get(bg));
+            actors.add(actor);
+            addActor(actor);
+        }
+    }
+
     public void changeBg(){
-        bgActor.setTexture(Assets.manager.get(bgs[index]));
+        //bgActor.setTexture(Assets.manager.get(bgs[index]));
+        actors.get(index).show();
     }
 
     public void refresh() {
