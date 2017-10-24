@@ -139,13 +139,16 @@ public class MathStage extends MyStage {
 
         addActor(szovegcucc = new MyTextButton("Sebesség: ", null));
         szovegcucc.setPosition(50, 600);
-        szovegcucc.setTexture(Assets.manager.get(Assets.BUTTONBG));
+        szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+        szovegcucc.enableTexture(true);
         addActor(szovegcucc2 = new MyTextButton("Távolság: ", null));
         szovegcucc2.setPosition(50, 500);
-        szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTONBG));
+        szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+        szovegcucc2.enableTexture(true);
         addActor(szovegcucc3 = new MyTextButton("Magasság: ", null));
         szovegcucc3.setPosition(50, 400);
-        szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTONBG));
+        szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+        szovegcucc3.enableTexture(true);
         MyLabel ered;
         addActor(ered = new MyLabel("Eredmények: ", MyLabel.style));
         ered.setPosition(50, 300);
@@ -165,9 +168,9 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam1);
-                    szovegcucc.enableTexture(true);
-                    szovegcucc2.enableTexture(false);
-                    szovegcucc3.enableTexture(false);
+                    szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
+                    szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                 }
             });
             szovegcucc2.addListener(new ClickListener(){
@@ -175,9 +178,9 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam2);
-                    szovegcucc.enableTexture(false);
-                    szovegcucc2.enableTexture(true);
-                    szovegcucc3.enableTexture(false);
+                    szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
+                    szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                 }
             });
             szovegcucc3.addListener(new ClickListener(){
@@ -185,9 +188,9 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam3);
-                    szovegcucc.enableTexture(false);
-                    szovegcucc2.enableTexture(false);
-                    szovegcucc3.enableTexture(true);
+                    szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                 }
             });
 
@@ -196,9 +199,9 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam1);
-                    szovegcucc.enableTexture(true);
-                    szovegcucc2.enableTexture(false);
-                    szovegcucc3.enableTexture(false);
+                    szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
+                    szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                 }
             });
             szam2.addListener(new ClickListener(){
@@ -206,9 +209,9 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam2);
-                    szovegcucc.enableTexture(false);
-                    szovegcucc2.enableTexture(true);
-                    szovegcucc3.enableTexture(false);
+                    szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
+                    szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                 }
             });
             szam3.addListener(new ClickListener(){
@@ -216,9 +219,9 @@ public class MathStage extends MyStage {
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
                     inputButtons.show(szam3);
-                    szovegcucc.enableTexture(false);
-                    szovegcucc2.enableTexture(false);
-                    szovegcucc3.enableTexture(true);
+                    szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+                    szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                 }
             });
         }else{
@@ -258,9 +261,9 @@ public class MathStage extends MyStage {
     }
 
     public void disableButtons(){
-        szovegcucc.enableTexture(false);
-        szovegcucc2.enableTexture(false);
-        szovegcucc3.enableTexture(false);
+        szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+        szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
+        szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
     }
 
     public void successfulCalculation(){
