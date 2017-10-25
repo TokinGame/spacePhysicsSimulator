@@ -130,10 +130,10 @@ public class MathStage extends MyStage {
                             ered.setVisible(true);
                             eredmeny.setVisible(true);
                         }catch (NumberFormatException e){
-                            eredmeny.setText("Spanish inquisition");
+                            eredmeny.setText("Valamelyik mezőt nem töltötted ki!");
                             eredmeny.setVisible(true);
                         }catch (Exception e){
-                            eredmeny.setText("Hibás adat, 666");
+                            eredmeny.setText("Nem létezik ilyen szög.");
                             eredmeny.setVisible(true);
                         }
                     }
