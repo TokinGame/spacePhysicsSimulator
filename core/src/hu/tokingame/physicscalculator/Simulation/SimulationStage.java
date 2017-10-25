@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
+import hu.tokingame.physicscalculator.BaseClass.BGStage;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
@@ -15,7 +16,7 @@ import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 
 
-public class SimulationStage extends MyStage {
+public class SimulationStage extends BGStage {
 
     float elapsedtime = 0;
 
@@ -210,7 +211,9 @@ public class SimulationStage extends MyStage {
 
     }
 
-    public void init(){
+    @Override
+    protected void init() {
+        super.init();
         refresh();
     }
 }

@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import java.util.ArrayList;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
+import hu.tokingame.physicscalculator.BaseClass.BGStage;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
@@ -20,11 +21,14 @@ import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
+
 /**
  * Created by M on 10/24/2017.
  */
 
-public class BGSelectStage extends MyStage {
+public class BGSelectStage extends BGStage {
     float elapsedtime = 0;
 
     int rand(int a, int b){
@@ -32,13 +36,12 @@ public class BGSelectStage extends MyStage {
     }
 
     //// TODO: 10/24/2017 Normális hátterek
-    private AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
+    //private AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
 
     private ArrayList<BGShowcaseActor> actors = new ArrayList<BGShowcaseActor>();
 
-    private static int index = 1;
+    private int index = bgIndex;
 
-    private OneSpriteStaticActor bgActor;
 
     private MyTextButton leftButton, rightButton;
 
@@ -49,14 +52,6 @@ public class BGSelectStage extends MyStage {
         Gdx.input.setCatchBackKey(true);
         this.setDebugAll(true);
 
-        addActor(bgActor = new OneSpriteStaticActor(Assets.manager.get(bgs[index])){
-            @Override
-            protected void init() {
-                super.init();
-                this.setPosition(0,0);
-                this.setSize(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT);
-            }
-        });
 
         addBGShowCase();
 
@@ -75,7 +70,7 @@ public class BGSelectStage extends MyStage {
                             if(index - 1 >= 0){
                                 index--;
                                 actors.get(index + 1).hide(Globals.WORLD_WIDTH);
-                                changeBg();
+                                actors.get(index).show();
                             }
                         }
                     }
@@ -98,8 +93,27 @@ public class BGSelectStage extends MyStage {
                             if(index + 1 <= bgs.length-1){
                                 index++;
                                 actors.get(index-1).hide(0-actors.get(index-1).getWidth());
-                                changeBg();
+                                actors.get(index).show();
                             }
+                        }
+                    }
+                });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
+            }
+        });
+
+        addActor(new MyTextButton("Beállítás"){
+            @Override
+            protected void init() {
+                super.init();
+                this.setPosition(Globals.WORLD_WIDTH/2 - this.getWidth()/2, this.getY());
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        if(!btnDisabled){
+                            changeBG();
                         }
                     }
                 });
@@ -147,9 +161,10 @@ public class BGSelectStage extends MyStage {
         }
     }
 
-    public void changeBg(){
-        bgActor.setTexture(Assets.manager.get(bgs[index]));
-        actors.get(index).show();
+
+    public void changeBG(){
+        bgIndex = index;
+        updateBG();
     }
 
     public void refresh() {
@@ -191,6 +206,7 @@ public class BGSelectStage extends MyStage {
     }
 
     public void init(){
+        super.init();
         refresh();
     }
 }

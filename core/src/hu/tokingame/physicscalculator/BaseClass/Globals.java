@@ -20,7 +20,8 @@ public class Globals {
 
     public static final boolean IS_DEBUG = true;
 
-    public static AssetDescriptor<Texture> bg = Assets.POTATO;
+    public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
+    public static int bgIndex = 0;
 
     public static boolean sounds = true;
 

@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
+import hu.tokingame.physicscalculator.BaseClass.BGStage;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
@@ -19,7 +20,7 @@ import hu.tokingame.physicscalculator.Simulation.MathScreen;
  * Created by davim on 2016. 10. 07..
  */
 
-public class SettingsStage extends MyStage {
+public class SettingsStage extends BGStage {
 
     float elapsedtime = 0;
 
@@ -54,7 +55,7 @@ public class SettingsStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 10);
+                setPosition(Globals.WORLD_WIDTH/2 - this.getWidth()/2, 10);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -113,7 +114,9 @@ public class SettingsStage extends MyStage {
 
     }
 
+    @Override
     public void init(){
+        super.init();
         refresh();
     }
 }
