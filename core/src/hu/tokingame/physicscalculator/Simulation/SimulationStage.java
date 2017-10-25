@@ -5,20 +5,11 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import javax.xml.bind.annotation.XmlElementDecl;
-
-import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
-import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
-import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
-import hu.tokingame.physicscalculator.Menu.MenuScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 
@@ -26,6 +17,8 @@ import hu.tokingame.physicscalculator.Physics.Calculator;
 public class SimulationStage extends MyStage {
 
     float elapsedtime = 0;
+
+    private float timeOfSpinning = 0;
 
     public float getScale() {
         return scale;
@@ -39,12 +32,12 @@ public class SimulationStage extends MyStage {
 
     Calculator calculator;
     OneSpriteStaticActor grafikon;
-    Potato potato1, potato2;
+    ProjectileActor potato1, potato2;
     Pixmap pixmap;
-    Target target;
-    OneSpriteStaticActor cannon;
+    TargetActor target;
+    CannonActor cannon;
 
-    // TODO: 10/25/2017 Ez azért kell mert az ágyú textúra 45 fokban áll. EZ NE MARADJON ÍGY 
+    // TODO: 10/25/2017 Ez azért kell mert az ágyú textúra 45 fokban áll. EZ NE MARADJON ÍGY
     private final float rotationOffset = 45;
 
     int h = 1000;
@@ -115,24 +108,23 @@ public class SimulationStage extends MyStage {
                 grafikon.debug();
                 setDebugAll(true);
             }
-            target = new Target(calculator.getX()*getScale(), calculator.getY()*getScale());
+            target = new TargetActor(calculator.getX()*getScale(), calculator.getY()*getScale());
             addActor(target);
             grafikon.setSize(pixmap.getWidth(), pixmap.getHeight());
             addActor(grafikon);
-            addActor(potato1 = new Potato(0,0));
-            addActor(potato2 = new Potato(0,0));
-            addActor(cannon = new OneSpriteStaticActor(Assets.manager.get(Assets.CANNON)){
+            addActor(potato1 = new ProjectileActor(0,0));
+            addActor(potato2 = new ProjectileActor(0,0));
+            addActor(cannon = new CannonActor(){
                 @Override
                 protected void init() {
                     super.init();
                     setSize(100, 100);
                     setOrigin(0,0);
                     setPosition(0, 0);
-                    setRotation(calc.getAlpha()[0]-rotationOffset);
+                    setRotation(0-rotationOffset);
                 }
             });
-            potato1.startSpinning();
-
+            cannon.rotateTo(calc.getAlpha()[0]-rotationOffset, potato1);
         }
 /*
         System.out.println("---------");
@@ -184,29 +176,19 @@ public class SimulationStage extends MyStage {
         elapsedtime += delta;
 
         try {
-            /*if(elapsedtime < calculator.getDuration(1)){
-                potato1.setPosition(calculator.getWidth(elapsedtime, 1)*scale, calculator.getHeight(elapsedtime, 1)*scale);
-            }else {
-                if((elapsedtime + calculator.getDuration(1)) < (calculator.getDuration(2) + calculator.getDuration(1))){
-                    potato2.setPosition(calculator.getWidth(elapsedtime, 2)*scale, calculator.getHeight(elapsedtime, 2)*scale);
-                }else potato2.stopSpinning();
-                cannon.setRotation(calculator.getAlpha()[1]);
-                potato1.stopSpinning();
-
-            }*/
-
             if(potato1.isSpinning()){
-                potato1.setPosition(calculator.getWidth(elapsedtime, 1)*scale, calculator.getHeight(elapsedtime, 1)*scale);
-                if(elapsedtime > calculator.getDuration(1)) {
+                timeOfSpinning += delta;
+                potato1.setPosition(calculator.getWidth(timeOfSpinning, 1)*scale, calculator.getHeight(timeOfSpinning, 1)*scale);
+                if(timeOfSpinning > calculator.getDuration(1)) {
                     potato1.stopSpinning();
-                    elapsedtime = 0;
-                    potato2.startSpinning();
-                    cannon.setRotation(calculator.getAlpha()[1]-rotationOffset);
+                    timeOfSpinning = 0;
+                    cannon.rotateTo(calculator.getAlpha()[1]-rotationOffset,potato2);
                 }
             }
             if(potato2.isSpinning()){
-                potato2.setPosition(calculator.getWidth(elapsedtime, 2)*scale, calculator.getHeight(elapsedtime, 2)*scale);
-                if(elapsedtime > calculator.getDuration(2)){
+                timeOfSpinning += delta;
+                potato2.setPosition(calculator.getWidth(timeOfSpinning, 2)*scale, calculator.getHeight(timeOfSpinning, 2)*scale);
+                if(timeOfSpinning > calculator.getDuration(2)){
                     potato2.stopSpinning();
                 }
             }

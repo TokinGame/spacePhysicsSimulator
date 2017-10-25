@@ -9,11 +9,11 @@ import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
  * Created by M on 10/19/2017.
  */
 
-public class Target extends OneSpriteStaticActor {
+public class TargetActor extends OneSpriteStaticActor {
     float elapsedTime = 0;
 
 
-    public Target(float x ,float y) {
+    public TargetActor(float x , float y) {
         super(Assets.manager.get(Assets.TARGET));
         setSize(160, 87.5f);
         setOrigin(getWidth()/2, getHeight()/2);

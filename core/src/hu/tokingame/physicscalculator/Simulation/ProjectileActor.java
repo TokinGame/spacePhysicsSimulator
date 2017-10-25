@@ -9,7 +9,7 @@ import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
  * Created by davim on 2017. 10. 12..
  */
 
-public class Potato extends OneSpriteStaticActor {
+public class ProjectileActor extends OneSpriteStaticActor {
 
     float elapsedTime = 0;
     int rand(int a, int b){
@@ -18,7 +18,7 @@ public class Potato extends OneSpriteStaticActor {
     int x = rand(-100,100);
     boolean spinning = false;
 
-    public Potato(float x, float y) {
+    public ProjectileActor(float x, float y) {
         super(Assets.manager.get(Assets.POTATO));
         setSize(50, 50);
         setPosition(x, y);
