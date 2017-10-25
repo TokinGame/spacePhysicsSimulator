@@ -53,6 +53,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
             super(text, textButtonStyle);
             init();
         }
+
         public MyTextButton(String text, Texture texture, boolean enable) {
             super(text, textButtonStyle);
             this.texture = texture;
@@ -62,12 +63,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
             }
             init();
         }
+
         public MyTextButton(String text, Texture texture) {
             super(text, textButtonStyle);
             this.texture = texture;
             init();
         }
 
+        //Ez nem tudom mért létezik de bárki is csinálta érdemel legalább 100 karót 
         public void enableTexture(boolean enabled){
             if(enabledT != null){
                 if(enabled){
@@ -85,7 +88,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
             style.down = new TextureRegionDrawable(new TextureRegion(texture));
             style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
             enabledT = style;
+            this.enableTexture(true);
         }
+
         public void setTextureUpDown(Texture up, Texture down){
             style.up = new TextureRegionDrawable(new TextureRegion(up));
             style.down = new TextureRegionDrawable(new TextureRegion(down));

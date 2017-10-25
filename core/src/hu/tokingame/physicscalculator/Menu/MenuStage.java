@@ -155,7 +155,7 @@ public class MenuStage extends MyStage {
                             Assets.manager.get(Assets.MAIN_MUSIC).play();
                         }
                         else {
-                            Assets.manager.get(Assets.MUSIC_OFF);
+                            setTexture(Assets.manager.get(Assets.MUSIC_OFF));
                             Assets.manager.get(Assets.MAIN_MUSIC).pause();
                         }
                     }

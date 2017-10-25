@@ -16,6 +16,9 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 public class BGShowcaseActor extends OneSpriteStaticActor {
 
     private final BGShowcaseActor bgShowcaseActor = this;
+    private BGSelectStage bgSelectStage;
+
+    private boolean isMoving = false;
 
     public BGShowcaseActor(Texture texture) {
         super(texture);
@@ -25,34 +28,41 @@ public class BGShowcaseActor extends OneSpriteStaticActor {
     }
 
     public void show(){
-        if(!this.isVisible()){
+        //if(!this.isVisible()){
             this.setVisible(true);
             final MoveToAction moveToAction = new MoveToAction();
             moveToAction.setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, this.getY());
             moveToAction.setDuration(1.2f);
+            isMoving = true;
             this.addAction(sequence(moveToAction, run(new Runnable() {
                 @Override
                 public void run() {
                     bgShowcaseActor.removeAction(moveToAction);
+                    isMoving = false;
                 }
             })));
 
-        }
+        //}
     }
 
 
-    public void hide(final float posX, final float waitX){
+    public void hide(final float posX){
         final MoveToAction moveToAction = new MoveToAction();
         moveToAction.setPosition(posX, this.getY());
         moveToAction.setDuration(1.2f);
+        isMoving = true;
         this.addAction(sequence(moveToAction, run(new Runnable() {
             @Override
             public void run() {
                 bgShowcaseActor.removeAction(moveToAction);
-                bgShowcaseActor.setVisible(false);
-                bgShowcaseActor.setPosition(waitX, bgShowcaseActor.getY());
+                //bgShowcaseActor.setVisible(false);
+                isMoving = false;
             }
         })));
 
+    }
+
+    public boolean isMoving() {
+        return isMoving;
     }
 }
