@@ -70,6 +70,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
             init();
         }
 
+        //Ez nem tudom mért létezik de bárki is csinálta érdemel legalább 100 karót 
         public void enableTexture(boolean enabled){
             if(enabledT != null){
                 if(enabled){
