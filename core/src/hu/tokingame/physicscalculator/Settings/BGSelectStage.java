@@ -32,15 +32,17 @@ public class BGSelectStage extends MyStage {
     }
 
     //// TODO: 10/24/2017 Normális hátterek
-    private AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON};
+    private AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
 
     private ArrayList<BGShowcaseActor> actors = new ArrayList<BGShowcaseActor>();
 
-    private int index = 0;
+    private static int index = 1;
 
     private OneSpriteStaticActor bgActor;
 
     private MyTextButton leftButton, rightButton;
+
+    private boolean btnDisabled = false;
 
     public BGSelectStage(Viewport viewport, Batch batch, final MyGdxGame game) {
         super(viewport, batch, game);
@@ -69,12 +71,12 @@ public class BGSelectStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        if(index - 1 >= 0){
-                            index--;
-                            actors.get(index + 1).hide(Globals.WORLD_WIDTH,Globals.WORLD_WIDTH);
-                            changeBg();
-                        }else{
-
+                        if(!btnDisabled){
+                            if(index - 1 >= 0){
+                                index--;
+                                actors.get(index + 1).hide(Globals.WORLD_WIDTH);
+                                changeBg();
+                            }
                         }
                     }
                 });
@@ -92,12 +94,12 @@ public class BGSelectStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        if(index + 1 <= bgs.length-1){
-                            index++;
-                            actors.get(index-1).hide(0-actors.get(index-1).getWidth(),0);
-                            changeBg();
-                        }else{
-
+                        if(!btnDisabled){
+                            if(index + 1 <= bgs.length-1){
+                                index++;
+                                actors.get(index-1).hide(0-actors.get(index-1).getWidth());
+                                changeBg();
+                            }
                         }
                     }
                 });
@@ -105,9 +107,6 @@ public class BGSelectStage extends MyStage {
                 enableTexture(true);
             }
         });
-
-
-        addActor(new BGShowcaseActor(Assets.manager.get(bgs[index])));
 
         addActor(new MyTextButton("vissza he"){
             @Override
@@ -136,10 +135,20 @@ public class BGSelectStage extends MyStage {
             actors.add(actor);
             addActor(actor);
         }
+        for (int i = 0; i < actors.size(); i++) {
+            BGShowcaseActor actor = actors.get(i);
+            if(i < index){
+                actor.setPosition(0-actor.getWidth(), actor.getY());
+            }else if (i == index){
+                actor.setPosition(Globals.WORLD_WIDTH/2 - actor.getWidth()/2, actor.getY());
+            }else if(i > index){
+                actor.setPosition(Globals.WORLD_WIDTH, actor.getY());
+            }
+        }
     }
 
     public void changeBg(){
-        //bgActor.setTexture(Assets.manager.get(bgs[index]));
+        bgActor.setTexture(Assets.manager.get(bgs[index]));
         actors.get(index).show();
     }
 
@@ -165,7 +174,20 @@ public class BGSelectStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
         elapsedtime += delta;
+        int moving = 0;
+        for (BGShowcaseActor actor: actors) {
+            if(actor.isMoving()) moving++;
+        }
+        if(moving > 0) this.setBtnDisabled(true);
+        else this.setBtnDisabled(false);
+    }
 
+    public void setBtnDisabled(boolean bool){
+        btnDisabled = bool;
+    }
+
+    public boolean isBtnDisabled() {
+        return btnDisabled;
     }
 
     public void init(){

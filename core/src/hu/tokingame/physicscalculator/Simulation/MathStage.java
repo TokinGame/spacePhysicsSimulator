@@ -111,14 +111,6 @@ public class MathStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         try {
-                            //float[] nem = Calculator.calcAlpha(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
-                            calculator.set(Float.parseFloat(szam1.getText().toString()), Float.parseFloat(szam2.getText().toString()), Float.parseFloat(szam3.getText().toString()));
-                            /*if (nem[0] == (float)-666.0) {
-                                eredmeny.setText("Látom te is annyira értesz a fizikához mint mi.");
-                                return;
-                            }else{
-                                eredmeny.setText(nem[0] + " koz " + nem[1]);
-                            }*/
                             eredmeny.setText(calculator.getAlpha()[0] + " koz " + calculator.getAlpha()[1]);
                             szimulal.setVisible(true);
                             successfulCalculation();
