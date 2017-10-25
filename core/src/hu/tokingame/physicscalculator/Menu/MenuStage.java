@@ -77,31 +77,32 @@ public class MenuStage extends MyStage {
             }
         });
 
-        addActor(new MyTextButton("Debug"){
-            @Override
-            protected void init() {
-                super.init();
-                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 150);
-                addListener(new ClickListener(){
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        super.clicked(event, x, y);
-                        try{
-                            Calculator clac = new Calculator(15f,5f,3f);
-                            game.setScreen(new SimulationScreen(game, clac), true);
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
-                enableTexture(true);
-            }
-        });
+
 
         if(Globals.IS_DEBUG){
-
+            addActor(new MyTextButton("Debug"){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 150);
+                    addListener(new ClickListener(){
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            try{
+                                Calculator clac = new Calculator(15f,5f,3f);
+                                game.setScreen(new SimulationScreen(game, clac), true);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                    enableTexture(true);
+                }
+            });
         }
+
         addActor(new MyTextButton("beállítások"){
 
             @Override

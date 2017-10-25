@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.FloatAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -24,7 +25,7 @@ public class MathStage extends MyStage {
 
     float elapsedtime = 0;
 
-    MyLabel szam1, szam2, szam3, eredmeny;
+    MyLabel szam1, szam2, szam3, eredmeny, ered;
     MyTextButton szovegcucc, szovegcucc2, szovegcucc3, szamol, szimulal;
     InputButtons inputButtons;
 
@@ -122,13 +123,18 @@ public class MathStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         try {
-                            eredmeny.setText(calculator.getAlpha()[0] + " koz " + calculator.getAlpha()[1]);
+                            calculator.set(Float.parseFloat(szam1.getText().toString()),Float.parseFloat(szam2.getText().toString()),Float.parseFloat(szam3.getText().toString()));
+                            eredmeny.setText("\u03B1" + "\u2081" + " = " + Math.round(calculator.getAlpha()[0]*100)/100.0 + "°\n\u03B1\u2082 = " + Math.round(calculator.getAlpha()[1]*100)/100.0 + "°");
                             szimulal.setVisible(true);
                             successfulCalculation();
+                            ered.setVisible(true);
+                            eredmeny.setVisible(true);
                         }catch (NumberFormatException e){
                             eredmeny.setText("Spanish inquisition");
+                            eredmeny.setVisible(true);
                         }catch (Exception e){
                             eredmeny.setText("Hibás adat, 666");
+                            eredmeny.setVisible(true);
                         }
                     }
                 });
@@ -155,11 +161,11 @@ public class MathStage extends MyStage {
         szovegcucc3.setSize(250, 60);
         szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc3.enableTexture(true);
-        MyLabel ered;
         addActor(ered = new MyLabel("Eredmények: ", MyLabel.style));
         ered.setPosition(50, 300);
-
-
+        eredmeny.setPosition(50, 200);
+        ered.setVisible(false);
+        eredmeny.setVisible(false);
 
         if(mode == 1){
             szam1.setPosition(350, 600);
@@ -168,7 +174,6 @@ public class MathStage extends MyStage {
             szam1.setSize(210, 60);
             szam2.setSize(210, 60);
             szam3.setSize(210, 60);
-            eredmeny.setPosition(100, 200);
             szovegcucc.addListener(new ClickListener(){
                 @Override
                 public void clicked(InputEvent event, float x, float y) {

@@ -215,7 +215,7 @@ public class InputButtons extends Group {
             this.setPosition(Globals.WORLD_WIDTH-750,0);
             final MoveToAction moveToAction = new MoveToAction();
             moveToAction.setPosition(0,0);
-            moveToAction.setDuration(1.2f);
+            moveToAction.setDuration(0.8f);
             this.addAction(sequence(moveToAction, run(new Runnable() {
                 @Override
                 public void run() {
@@ -230,7 +230,7 @@ public class InputButtons extends Group {
     public void hide(){
         final MoveToAction moveToAction = new MoveToAction();
         moveToAction.setPosition(Globals.WORLD_WIDTH-750,0);
-        moveToAction.setDuration(1.2f);
+        moveToAction.setDuration(0.8f);
         this.addAction(sequence(moveToAction, run(new Runnable() {
             @Override
             public void run() {
