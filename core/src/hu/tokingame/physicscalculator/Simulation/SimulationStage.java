@@ -44,6 +44,8 @@ public class SimulationStage extends MyStage {
     Target target;
     OneSpriteStaticActor cannon;
 
+    // TODO: 10/25/2017 Ez azért kell mert az ágyú textúra 45 fokban áll. EZ NE MARADJON ÍGY 
+    private final float rotationOffset = 45;
 
     int h = 1000;
 
@@ -123,9 +125,10 @@ public class SimulationStage extends MyStage {
                 @Override
                 protected void init() {
                     super.init();
-                    setPosition(0, 0);
                     setSize(100, 100);
-                    setRotation(calc.getAlpha()[0]);
+                    setOrigin(0,0);
+                    setPosition(0, 0);
+                    setRotation(calc.getAlpha()[0]-rotationOffset);
                 }
             });
             potato1.startSpinning();
@@ -198,7 +201,7 @@ public class SimulationStage extends MyStage {
                     potato1.stopSpinning();
                     elapsedtime = 0;
                     potato2.startSpinning();
-                    cannon.setRotation(calculator.getAlpha()[1]);
+                    cannon.setRotation(calculator.getAlpha()[1]-rotationOffset);
                 }
             }
             if(potato2.isSpinning()){

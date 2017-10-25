@@ -48,6 +48,18 @@ abstract public class OneSpriteActor extends MyActor {
     }
 
     @Override
+    public void setRotation(float degrees) {
+        super.setRotation(degrees);
+        sprite.setRotation(degrees);
+    }
+
+    @Override
+    public void setOrigin(float originX, float originY) {
+        super.setOrigin(originX, originY);
+        sprite.setOrigin(originX, originY);
+    }
+
+    @Override
     protected void sizeChanged() {
         super.sizeChanged();
         sprite.setSize(getWidth(), getHeight());
