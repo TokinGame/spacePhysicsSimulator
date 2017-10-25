@@ -58,18 +58,30 @@ public class InputButtons extends Group {
         //TODO jobb felirat
         delete = new MyTextButton("Backspace");
 
-        b1.setPosition(800, 600);
-        b2.setPosition(900, 600);
-        b3.setPosition(1000, 600);
-        b4.setPosition(800, 500);
-        b5.setPosition(900, 500);
-        b6.setPosition(1000, 500);
-        b7.setPosition(800, 400);
-        b8.setPosition(900, 400);
-        b9.setPosition(1000, 400);
-        b0.setPosition(900, 300);
-        close.setPosition(800, 200);
-        delete.setPosition(1000, 200);
+        b1.setPosition(800, 500);
+        b2.setPosition(900, 500);
+        b3.setPosition(1000, 500);
+        b4.setPosition(800, 400);
+        b5.setPosition(900, 400);
+        b6.setPosition(1000, 400);
+        b7.setPosition(800, 300);
+        b8.setPosition(900, 300);
+        b9.setPosition(1000, 300);
+        b0.setPosition(900, 200);
+
+        b1.setSize(100,100);
+        b2.setSize(100,100);
+        b3.setSize(100,100);
+        b4.setSize(100,100);
+        b5.setSize(100,100);
+        b6.setSize(100,100);
+        b7.setSize(100,100);
+        b8.setSize(100,100);
+        b9.setSize(100,100);
+        b0.setSize(100,100);
+
+        close.setPosition(800, 100);
+        delete.setPosition(1000, 100);
 
         addActor(b1);
         addActor(b2);

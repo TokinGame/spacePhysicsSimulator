@@ -55,6 +55,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> CANNONBASE = new AssetDescriptor<Texture>("cannonbase.png", Texture.class);
     public static final AssetDescriptor<Texture> MUSIC_ON = new AssetDescriptor<Texture>("kazetta.png", Texture.class);
     public static final AssetDescriptor<Texture> MUSIC_OFF = new AssetDescriptor<Texture>("kazetta_athuz.png", Texture.class);
+    public static final AssetDescriptor<Texture> FULLHATTER = new AssetDescriptor<Texture>("hatter_fullacel.png", Texture.class);
 
 
 
@@ -93,6 +94,7 @@ public class Assets {
         manager.load(CANNONBASE);
         manager.load(MUSIC_OFF);
         manager.load(MUSIC_ON);
+        manager.load(FULLHATTER);
 
         manager.load(MAIN_MUSIC);
 

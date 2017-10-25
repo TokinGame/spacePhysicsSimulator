@@ -12,6 +12,7 @@ import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
+import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 
@@ -57,12 +58,22 @@ public class MathStage extends MyStage {
             }
         };
 
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.FULLHATTER)){
+            @Override
+            protected void init() {
+                super.init();
+                setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+            }
+        });
+
         stage.addActor(inputButtons = new InputButtons(stage));
         inputButtons.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
         inputButtons.setPosition(1280,0);
 
 
-        addActor(new MyTextButton("nem"){
+
+
+        addActor(new MyTextButton("Vissza"){
             @Override
             protected void init() {
                 super.init();
@@ -101,7 +112,7 @@ public class MathStage extends MyStage {
                 enableTexture(true);
             }
         });
-        addActor(szamol = new MyTextButton("Számolaáss"){
+        addActor(szamol = new MyTextButton("Számolás"){
             @Override
             protected void init() {
                 super.init();
@@ -139,14 +150,17 @@ public class MathStage extends MyStage {
 
         addActor(szovegcucc = new MyTextButton("Sebesség: ", null));
         szovegcucc.setPosition(50, 600);
+        szovegcucc.setSize(250, 60);
         szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc.enableTexture(true);
         addActor(szovegcucc2 = new MyTextButton("Távolság: ", null));
         szovegcucc2.setPosition(50, 500);
+        szovegcucc2.setSize(250, 60);
         szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc2.enableTexture(true);
         addActor(szovegcucc3 = new MyTextButton("Magasság: ", null));
         szovegcucc3.setPosition(50, 400);
+        szovegcucc3.setSize(250, 60);
         szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc3.enableTexture(true);
         MyLabel ered;
@@ -156,9 +170,9 @@ public class MathStage extends MyStage {
 
 
         if(mode == 1){
-            szam1.setPosition(300, 600);
-            szam2.setPosition(300, 500);
-            szam3.setPosition(300, 400);
+            szam1.setPosition(350, 600);
+            szam2.setPosition(350, 500);
+            szam3.setPosition(350, 400);
             szam1.setSize(210, 60);
             szam2.setSize(210, 60);
             szam3.setSize(210, 60);
