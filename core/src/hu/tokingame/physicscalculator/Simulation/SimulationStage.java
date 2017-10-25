@@ -20,11 +20,14 @@ public class SimulationStage extends MyStage {
 
     private float timeOfSpinning = 0;
 
+    private float pixmapWidht = 1280;
+    private float pixmapHeight = 720;
+
     public float getScale() {
         return scale;
     }
 
-    float scale, p1finished;
+    float scale;
 
     int rand(int a, int b){
         return (int)(Math.random()*(b-a+1)+a);
@@ -52,7 +55,7 @@ public class SimulationStage extends MyStage {
 
 
         try{
-            pixmap = new Pixmap(1024, 576, Pixmap.Format.RGBA8888);
+            pixmap = new Pixmap((int)pixmapWidht, (int)pixmapHeight, Pixmap.Format.RGBA8888);
             //pixmap.setColor(1, 1, 1, 1);
             //pixmap.fill();
             //pixmap.setColor(8, 0, 0, 8);
@@ -76,25 +79,25 @@ public class SimulationStage extends MyStage {
             duration = calculator.getDuration(1);
             //System.out.println(calculator.getDuration(index));
             pixmap.setColor(0,1,0,1);
-            for(f = 0; f<=duration; f+=duration/1024f){
+            for(f = 0; f<=duration; f+=duration/pixmapWidht){
                 pixmap.fillCircle((int)(calculator.getWidth(f, 1)*scale), pmheight - (int)(calculator.getHeight(f, 1)*scale), 1);
             }
             pixmap.setColor(0,0.2f,0,1);
             while ((int)(calculator.getWidth(f, 1)*scale)<pmwidth && (int)(calculator.getHeight(f, 1)*scale)>0){
-                f+=duration/1024f;
+                f+=duration/pixmapWidht;
                 pixmap.fillCircle((int)(calculator.getWidth(f, 1)*scale), pmheight - (int)(calculator.getHeight(f, 1)*scale), 1);
             }
 
 
             pixmap.setColor(1,0,0,1);
             duration = calculator.getDuration(2);
-            for(f = 0; f<=duration; f+=duration/1024f){
+            for(f = 0; f<=duration; f+=duration/pixmapWidht){
                 pixmap.fillCircle((int)(calculator.getWidth(f, 2)*scale), pmheight - (int)(calculator.getHeight(f, 2)*scale), 1);
             }
 
             pixmap.setColor(0.2f,0,0,1);
             while ((int)(calculator.getWidth(f, 2)*scale)<pmwidth && (int)(calculator.getHeight(f, 2)*scale)>0){
-                f+=duration/1024f;
+                f+=duration/pixmapWidht;
                 pixmap.fillCircle((int)(calculator.getWidth(f, 2)*scale), pmheight - (int)(calculator.getHeight(f, 2)*scale), 1);
             }
 
