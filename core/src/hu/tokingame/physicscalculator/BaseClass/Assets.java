@@ -49,6 +49,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> MENUBACKGROUND2 = new AssetDescriptor<Texture>("hatter2.png", Texture.class);
     public static final AssetDescriptor<Texture> BUTTON_INACTIVE = new AssetDescriptor<Texture>("inactivebutton.png", Texture.class);
     public static final AssetDescriptor<Texture> BUTTON_ACTIVE = new AssetDescriptor<Texture>("activebutton.png", Texture.class);
+    public static final AssetDescriptor<Texture> CANNONBASE = new AssetDescriptor<Texture>("cannonbase.png", Texture.class);
 
 
 
@@ -82,6 +83,7 @@ public class Assets {
         manager.load(MENUBACKGROUND2);
         manager.load(BUTTON_ACTIVE);
         manager.load(BUTTON_INACTIVE);
+        manager.load(CANNONBASE);
 
 
     }

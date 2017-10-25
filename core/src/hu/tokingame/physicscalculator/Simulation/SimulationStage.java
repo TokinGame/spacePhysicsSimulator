@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
@@ -128,6 +129,14 @@ public class SimulationStage extends MyStage {
                 }
             });
             cannon.rotateTo(calc.getAlpha()[0]-rotationOffset, potato1);
+            addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.CANNONBASE)){
+                @Override
+                protected void init() {
+                    super.init();
+                    setSize(100,100);
+                    setPosition(0,0);
+                }
+            });
         }
 /*
         System.out.println("---------");
