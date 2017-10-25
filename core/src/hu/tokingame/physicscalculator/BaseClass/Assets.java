@@ -4,12 +4,15 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
+
+import jdk.nashorn.internal.objects.Global;
 
 /**
  * Created by M on 10/7/2016.
@@ -50,8 +53,12 @@ public class Assets {
     public static final AssetDescriptor<Texture> BUTTON_INACTIVE = new AssetDescriptor<Texture>("inactivebutton.png", Texture.class);
     public static final AssetDescriptor<Texture> BUTTON_ACTIVE = new AssetDescriptor<Texture>("activebutton.png", Texture.class);
     public static final AssetDescriptor<Texture> CANNONBASE = new AssetDescriptor<Texture>("cannonbase.png", Texture.class);
+    public static final AssetDescriptor<Texture> MUSIC_ON = new AssetDescriptor<Texture>("kazetta.png", Texture.class);
+    public static final AssetDescriptor<Texture> MUSIC_OFF = new AssetDescriptor<Texture>("kazetta_athuz.png", Texture.class);
 
 
+
+    public static final AssetDescriptor<Music> MAIN_MUSIC = new AssetDescriptor<Music>("bensound-scifi.mp3", Music.class);
 
 
 
@@ -84,12 +91,18 @@ public class Assets {
         manager.load(BUTTON_ACTIVE);
         manager.load(BUTTON_INACTIVE);
         manager.load(CANNONBASE);
+        manager.load(MUSIC_OFF);
+        manager.load(MUSIC_ON);
+
+        manager.load(MAIN_MUSIC);
 
 
     }
 
     public static void afterLoaded(){
 
+        manager.get(MAIN_MUSIC).setLooping(true);
+        if(Globals.sounds) manager.get(MAIN_MUSIC).play();
     }
 
     public static void unload(){

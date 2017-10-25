@@ -3,6 +3,7 @@ package hu.tokingame.physicscalculator.Menu;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -23,6 +24,7 @@ import hu.tokingame.physicscalculator.Physics.Calculator;
 import hu.tokingame.physicscalculator.Settings.SettingsScreen;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 import hu.tokingame.physicscalculator.Simulation.SimulationScreen;
+import jdk.nashorn.internal.objects.Global;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -133,6 +135,31 @@ public class MenuStage extends MyStage {
                 });
                 setTexture(Assets.manager.get(Assets.STEELBUTTON));
                 enableTexture(true);
+            }
+        });
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.MUSIC_ON)){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(10, 300);
+                setSize(100,100);
+                if(Globals.sounds) setTexture(Assets.manager.get(Assets.MUSIC_ON));
+                else Assets.manager.get(Assets.MUSIC_OFF);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        Globals.sounds = !Globals.sounds;
+                        if(Globals.sounds) {
+                            setTexture(Assets.manager.get(Assets.MUSIC_ON));
+                            Assets.manager.get(Assets.MAIN_MUSIC).play();
+                        }
+                        else {
+                            Assets.manager.get(Assets.MUSIC_OFF);
+                            Assets.manager.get(Assets.MAIN_MUSIC).pause();
+                        }
+                    }
+                });
             }
         });
 

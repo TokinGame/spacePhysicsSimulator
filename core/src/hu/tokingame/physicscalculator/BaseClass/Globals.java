@@ -22,4 +22,6 @@ public class Globals {
 
     public static AssetDescriptor<Texture> bg = Assets.POTATO;
 
+    public static boolean sounds = true;
+
 }
