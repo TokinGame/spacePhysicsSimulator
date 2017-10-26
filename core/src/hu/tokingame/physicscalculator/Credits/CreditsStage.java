@@ -70,6 +70,7 @@ public class CreditsStage extends MyStage {
         });
 
         String str = "Potato Launch Calculator\n"+
+                "Halloween Special Edition\n"+
                 "Készítette: Tökin Game\n" +
                 "Tagok:\n" +
                 "Bálint Dániel\n" +

@@ -43,6 +43,7 @@ public class Assets {
     public static final AssetDescriptor<BitmapFont> DIGITAL_7_FONT
             = new AssetDescriptor<BitmapFont>("digital-7.ttf", BitmapFont.class, fontParameter2);
 
+    //<editor-fold desc="Main Assets">
     public static final AssetDescriptor<Texture> TOKIN = new AssetDescriptor<Texture>("tokin.PNG", Texture.class);
     public static final AssetDescriptor<Texture> BUTTONBG = new AssetDescriptor<Texture>("buttonbg.png", Texture.class);
     public static final AssetDescriptor<Texture> STEELBUTTON = new AssetDescriptor<Texture>("steelbutton.png", Texture.class);
@@ -72,7 +73,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> SPOOKY_TARGET = new AssetDescriptor<Texture>("spookytarget.png", Texture.class);
     public static final AssetDescriptor<Texture> SETTINGS_ICON = new AssetDescriptor<Texture>("gear_icon.png", Texture.class);
     public static final AssetDescriptor<Texture> CONSOLE_BG = new AssetDescriptor<Texture>("console.png", Texture.class);
-
+    //</editor-fold>
 
 
     public static final AssetDescriptor<Music> MAIN_MUSIC = new AssetDescriptor<Music>("bensound-scifi.mp3", Music.class);
