@@ -85,4 +85,8 @@ abstract public class MyScreen implements Screen {
         this.b = b;
     }
 
+    public void backFromStack(){
+
+    }
+
 }

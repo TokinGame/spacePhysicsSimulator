@@ -64,7 +64,7 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new MathScreen(game, 1), true);
+                        game.setScreen(new MathScreen(game), true);
                     }
                 });
                 setTexture(Assets.manager.get(Assets.STEELBUTTON));

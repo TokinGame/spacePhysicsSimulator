@@ -26,6 +26,9 @@ public class CreditsStage extends MyStage {
     }
     MyLabel uzi;
 
+    int tRot, pRot;
+    float px, py, tx, ty;
+
     OneSpriteStaticActor tokin, krumpli;
 
     public CreditsStage(Viewport viewport, Batch batch, final MyGdxGame game) {
@@ -39,6 +42,30 @@ public class CreditsStage extends MyStage {
                 super.init();
                 setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
                 setPosition(0,0);
+            }
+        });
+
+        tRot = rand(50, 200);
+        pRot = rand(-50, -200);
+        px = rand(-100, 100)/100f;
+        py = rand(-100, 100)/100f;
+        tx = rand(-100, 100)/100f;
+        ty = rand(-100, 100)/100f;
+
+        addActor(tokin = new OneSpriteStaticActor(Assets.manager.get(Assets.TOKIN)){
+            @Override
+            protected void init() {
+                super.init();
+                setSize(100, 100);
+                setPosition(1080, 520);
+            }
+        });
+        addActor(krumpli = new OneSpriteStaticActor(Assets.manager.get(Assets.POTATO)){
+            @Override
+            protected void init() {
+                super.init();
+                setSize(100, 100);
+                setPosition(100, 520);
             }
         });
 
@@ -71,22 +98,7 @@ public class CreditsStage extends MyStage {
             }
         });
 
-        addActor(tokin = new OneSpriteStaticActor(Assets.manager.get(Assets.TOKIN)){
-            @Override
-            protected void init() {
-                super.init();
-                setSize(100, 100);
-                setPosition(1080, 520);
-            }
-        });
-        addActor(krumpli = new OneSpriteStaticActor(Assets.manager.get(Assets.POTATO)){
-            @Override
-            protected void init() {
-                super.init();
-                setSize(100, 100);
-                setPosition(100, 520);
-            }
-        });
+
 
 
 
@@ -115,6 +127,12 @@ public class CreditsStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
         elapsedtime += delta;
+
+        krumpli.setRotation(elapsedtime*pRot);
+        tokin.setRotation(elapsedtime*tRot);
+
+        krumpli.setPosition(krumpli.getX()+px, krumpli.getY()+py);
+        tokin.setPosition(tokin.getX()+tx, tokin.getY()+ty);
 
     }
 

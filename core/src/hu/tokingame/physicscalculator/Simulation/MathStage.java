@@ -44,11 +44,11 @@ public class MathStage extends MyStage {
 
     MathStage stage;
 
-    public MathStage(Viewport viewport, Batch batch, final MyGdxGame game, int mode) {
+    public MathStage(Viewport viewport, Batch batch, final MyGdxGame game) {
 
         super(viewport, batch, game);
         stage = this;
-        this.mode = mode;
+
         Gdx.input.setCatchBackKey(true);
 
         calculator = new Calculator(){
