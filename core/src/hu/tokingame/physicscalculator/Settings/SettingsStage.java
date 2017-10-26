@@ -55,7 +55,7 @@ public class SettingsStage extends BGStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH/2 - this.getWidth()/2, 10);
+                setPosition(Globals.WORLD_WIDTH/2 - this.getWidth()/2, 350);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -69,22 +69,7 @@ public class SettingsStage extends BGStage {
         });
 
 
-        addActor(new MyTextButton("Kell zene?"){
-            @Override
-            protected void init() {
-                super.init();
-                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 450);
-                addListener(new ClickListener(){
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        super.clicked(event, x, y);
-                        game.setScreen(new MathScreen(game, 1), true);
-                    }
-                });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
-                enableTexture(true);
-            }
-        });
+
 
 
     }

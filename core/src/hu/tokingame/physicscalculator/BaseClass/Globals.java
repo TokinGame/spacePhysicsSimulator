@@ -23,6 +23,9 @@ public class Globals {
     public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
     public static int bgIndex = 0;
 
+    public static final float[] gForces = {9.81f, 1.62f, 3.71f};
+    public static final String[] planets = {"Föld", "Hold", "Mars"};
+
     public static boolean sounds = true;
 
 }

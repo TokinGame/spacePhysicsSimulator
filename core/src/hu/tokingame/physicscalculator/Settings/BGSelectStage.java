@@ -15,14 +15,18 @@ import java.util.ArrayList;
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.BGStage;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
+import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.MyGdxGame;
+import hu.tokingame.physicscalculator.Physics.Calculator;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 
 import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.gForces;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.planets;
 
 /**
  * Created by M on 10/24/2017.
@@ -44,6 +48,7 @@ public class BGSelectStage extends BGStage {
 
 
     private MyTextButton leftButton, rightButton;
+    private MyLabel gravityLabel;
 
     private boolean btnDisabled = false;
 
@@ -71,6 +76,8 @@ public class BGSelectStage extends BGStage {
                                 index--;
                                 actors.get(index + 1).hide(Globals.WORLD_WIDTH);
                                 actors.get(index).show();
+                                showGravity(index);
+
                             }
                         }
                     }
@@ -94,6 +101,7 @@ public class BGSelectStage extends BGStage {
                                 index++;
                                 actors.get(index-1).hide(0-actors.get(index-1).getWidth());
                                 actors.get(index).show();
+                                showGravity(index);
                             }
                         }
                     }
@@ -114,6 +122,7 @@ public class BGSelectStage extends BGStage {
                         super.clicked(event, x, y);
                         if(!btnDisabled){
                             changeBG();
+                            Calculator.setG(gForces[index]);
                         }
                     }
                 });
@@ -138,6 +147,8 @@ public class BGSelectStage extends BGStage {
                 enableTexture(true);
             }
         });
+        addActor(gravityLabel = new MyLabel(""));
+        showGravity(index);
 
 
     }
@@ -159,6 +170,13 @@ public class BGSelectStage extends BGStage {
                 actor.setPosition(Globals.WORLD_WIDTH, actor.getY());
             }
         }
+    }
+
+    public void showGravity(int ind){
+
+        gravityLabel.setText(planets[ind] + " - gravitáció: "+gForces[ind] + " m/s2");
+        gravityLabel.setPosition(Globals.WORLD_WIDTH/2-gravityLabel.getWidth()/2, 200);
+
     }
 
 

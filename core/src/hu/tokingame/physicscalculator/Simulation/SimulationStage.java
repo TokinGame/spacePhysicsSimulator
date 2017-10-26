@@ -5,13 +5,17 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.BGStage;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
+import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
+import hu.tokingame.physicscalculator.Menu.MenuScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 
@@ -69,6 +73,7 @@ public class SimulationStage extends BGStage {
         float duration;
         try {
             scale = Math.min(Math.min(((float)pixmap.getHeight())/calculator.getMaxHeight(1), ((float)pixmap.getWidth())/calculator.getX()), Math.min(((float)pixmap.getHeight())/calculator.getMaxHeight(2), ((float)pixmap.getWidth())/calculator.getX()));
+            scale *= 0.9f;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -136,6 +141,20 @@ public class SimulationStage extends BGStage {
                     super.init();
                     setSize(100,100);
                     setPosition(0,0);
+                }
+            });
+            addActor(new MyTextButton("Vissza"){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 10);
+                    addListener(new ClickListener(){
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            game.setScreen(new MenuScreen(game));
+                        }
+                    });
                 }
             });
         }

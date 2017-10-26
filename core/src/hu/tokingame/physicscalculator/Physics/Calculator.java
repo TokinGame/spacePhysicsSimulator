@@ -12,7 +12,7 @@ import static hu.tokingame.physicscalculator.Physics.MathUtils.fToD;
  */
 
 public class Calculator {
-    public static final float g = (float)(9.81);
+    public static float g = 9.81f;
 
     float v0 = 0f;
     float x = 0f;
@@ -33,7 +33,9 @@ public class Calculator {
         return y;
     }
 
-
+    public static void setG(float g) {
+        Calculator.g = g;
+    }
 
     float y = 0f;
     float[] alpha;
