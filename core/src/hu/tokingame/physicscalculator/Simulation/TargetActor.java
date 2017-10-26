@@ -18,7 +18,7 @@ public class TargetActor extends OneSpriteStaticActor {
 
     public TargetActor(float x , float y) {
         super(Assets.manager.get(Assets.TARGET));
-        setSize(151, 150);
+        setSize(150, 150);
         setOrigin(getWidth()/2, getHeight()/2);
         setPosition(x, y);
         if(bgs[bgIndex] == Assets.SPOOKY_BG){
