@@ -28,17 +28,18 @@ public class BetoltoScreen extends MyScreen {
         setBackGroundColor(0f, 0f, 0f);
         stage = new MyStage(game){
             @Override
-            protected void init() {
-
-            }
+            protected void init() {}
         };
+        stage.addActor(backGround= new OneSpriteStaticActor("loadingbg.png"));
+        backGround.setSize(MyScreen.WORLD_WIDTH,MyScreen.WORLD_HEIGHT);
+        backGround.setPosition(0,0);
         stage.addActor(new OneSpriteAnimatedActor("spookyloading.txt")
         {
             @Override
             protected void init() {
                 super.init();
                 setFps(10);
-                setSize(200,200);
+                setSize(300,300);
                 setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, Globals.WORLD_HEIGHT/2-this.getHeight()/2);
             }
         });
@@ -53,19 +54,15 @@ public class BetoltoScreen extends MyScreen {
     @Override
     public void render(float delta) {
         super.render(delta);
-
         if (elapsedTime > 2.0 && Assets.manager.update()) {
             if (Assets.manager.update()) {
                 Assets.afterLoaded();
                 game.setScreen(new MenuScreen(game));
             }
         }
-        //spriteBatch.begin();
         elapsedTime += delta;
         stage.act(delta);
         stage.draw();
-        //Globals.FONT_HOBO_STD.draw(spriteBatch,"Betöltés: " + Assets.manager.getLoadedAssets() + "/" + (Assets.manager.getQueuedAssets()+Assets.manager.getLoadedAssets()) + " (" + ((int)(Assets.manager.getProgress()*100f)) + "%)",0,50);
-        //spriteBatch.end();
     }
 
     @Override
