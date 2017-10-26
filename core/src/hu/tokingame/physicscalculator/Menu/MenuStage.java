@@ -1,30 +1,24 @@
 package hu.tokingame.physicscalculator.Menu;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
-import java.util.ArrayList;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
-import hu.tokingame.physicscalculator.BaseClass.OneSpriteActor;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.Exit.ExitScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
-import hu.tokingame.physicscalculator.Settings.SettingsScreen;
+import hu.tokingame.physicscalculator.Settings.BGSelectScreen;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 import hu.tokingame.physicscalculator.Simulation.SimulationScreen;
-import jdk.nashorn.internal.objects.Global;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -103,7 +97,7 @@ public class MenuStage extends MyStage {
             });
         }
 
-        addActor(new MyTextButton("beállítások"){
+        addActor(new MyTextButton("Beállítások"){
 
             @Override
             protected void init() {
@@ -113,7 +107,7 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new SettingsScreen(game), true);
+                        game.setScreen(new BGSelectScreen(game), true);
                     }
                 });
                 setTexture(Assets.manager.get(Assets.STEELBUTTON));

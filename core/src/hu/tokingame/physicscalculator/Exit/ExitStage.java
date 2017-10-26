@@ -1,7 +1,6 @@
 package hu.tokingame.physicscalculator.Exit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -13,30 +12,9 @@ import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.Menu.MenuScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
-import hu.tokingame.physicscalculator.Settings.SettingsScreen;
-import hu.tokingame.physicscalculator.Simulation.MathScreen;
 
-
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
-
-import java.util.ArrayList;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
-import hu.tokingame.physicscalculator.BaseClass.Globals;
-import hu.tokingame.physicscalculator.BaseClass.MyStage;
-import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
-import hu.tokingame.physicscalculator.BaseClass.OneSpriteActor;
-import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
-import hu.tokingame.physicscalculator.MyGdxGame;
-import hu.tokingame.physicscalculator.Settings.SettingsScreen;
-import hu.tokingame.physicscalculator.Simulation.MathScreen;
-
 
 
 public class ExitStage extends MyStage {
