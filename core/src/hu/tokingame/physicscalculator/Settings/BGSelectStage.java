@@ -116,7 +116,7 @@ public class BGSelectStage extends BGStage {
             @Override
             protected void init() {
                 super.init();
-                this.setPosition(Globals.WORLD_WIDTH/2 - this.getWidth()/2, this.getY());
+                this.setPosition(Globals.WORLD_WIDTH/2 - this.getWidth()/2, 10);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
