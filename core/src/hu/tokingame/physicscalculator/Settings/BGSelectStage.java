@@ -28,6 +28,7 @@ import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.gForces;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.planets;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.prefs;
 
 /**
  * Created by M on 10/24/2017.
@@ -183,6 +184,8 @@ public class BGSelectStage extends BGStage {
 
     public void changeBG(){
         bgIndex = index;
+        prefs.putInteger("bgIndex", index);
+        prefs.flush();
         updateBG();
     }
 

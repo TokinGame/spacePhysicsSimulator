@@ -134,14 +134,12 @@ public class MenuStage extends MyStage {
                 enableTexture(true);
             }
         });
-        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.MUSIC_ON)){
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Globals.sounds ? Assets.MUSIC_ON : Assets.MUSIC_OFF)){
             @Override
             protected void init() {
                 super.init();
                 setPosition(10, 260);
                 setSize(150,150);
-                if(Globals.sounds) setTexture(Assets.manager.get(Assets.MUSIC_ON));
-                else Assets.manager.get(Assets.MUSIC_OFF);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -155,6 +153,8 @@ public class MenuStage extends MyStage {
                             setTexture(Assets.manager.get(Assets.MUSIC_OFF));
                             Assets.manager.get(Assets.MAIN_MUSIC).pause();
                         }
+                        Globals.prefs.putBoolean("sounds", Globals.sounds);
+                        Globals.prefs.flush();
                     }
                 });
             }

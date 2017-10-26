@@ -2,12 +2,14 @@ package hu.tokingame.physicscalculator;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
+import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyScreen;
 import hu.tokingame.physicscalculator.Loading.BetoltoScreen;
 
@@ -31,6 +33,7 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void dispose () {
+		Globals.prefs.flush();
 		super.dispose();
 		Assets.unload();
 	}
