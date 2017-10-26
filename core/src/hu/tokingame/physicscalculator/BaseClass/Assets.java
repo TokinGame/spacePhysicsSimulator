@@ -74,6 +74,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> SETTINGS_ICON = new AssetDescriptor<Texture>("gear_icon.png", Texture.class);
     public static final AssetDescriptor<Texture> CONSOLE_BG = new AssetDescriptor<Texture>("console.png", Texture.class);
     public static final AssetDescriptor<Texture> MONITOR = new AssetDescriptor<Texture>("monitor.png", Texture.class);
+    public static final AssetDescriptor<Texture> LAUNCHBUTTON = new AssetDescriptor<Texture>("launch-button.png", Texture.class);
 
     //</editor-fold>
 
@@ -131,6 +132,7 @@ public class Assets {
         manager.load(SETTINGS_ICON);
         manager.load(CONSOLE_BG);
         manager.load(MONITOR);
+        manager.load(LAUNCHBUTTON);
 
         manager.load(MAIN_MUSIC);
 

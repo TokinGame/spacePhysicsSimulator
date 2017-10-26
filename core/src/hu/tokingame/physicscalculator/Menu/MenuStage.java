@@ -55,10 +55,11 @@ public class MenuStage extends MyStage {
             }
         });
 
-        addActor(new MyTextButton("Kilövés"){
+        addActor(new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
+                setSize(150,150);
                 setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 300);
                 addListener(new ClickListener(){
                     @Override
@@ -67,7 +68,7 @@ public class MenuStage extends MyStage {
                         game.setScreen(new MathScreen(game), true);
                     }
                 });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                setTexture(Assets.manager.get(Assets.LAUNCHBUTTON));
                 enableTexture(true);
             }
         });

@@ -133,7 +133,7 @@ public class BGSelectStage extends BGStage {
             }
         });
 
-        addActor(new MyTextButton("vissza he"){
+        addActor(new MyTextButton("Vissza"){
             @Override
             protected void init() {
                 super.init();
