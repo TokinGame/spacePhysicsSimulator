@@ -9,9 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
+import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
@@ -42,7 +44,17 @@ public class InputButtons extends Group {
 
         mathStage = stage;
 
-        //TODO add gombok
+
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.CONSOLE_BG)){
+            @Override
+            protected void init() {
+                super.init();
+                setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+                InputButtons.this.setPosition(0,0);
+            }
+        });
+
+
 
         b1 = new MyTextButton("1");
         b2 = new MyTextButton("2");
@@ -55,7 +67,7 @@ public class InputButtons extends Group {
         b9 = new MyTextButton("9");
         b0 = new MyTextButton("0");
         close = new MyTextButton("Bezár");
-        //TODO jobb felirat
+        //TODO minek
         delete = new MyTextButton("Backspace");
 
         b1.setPosition(800, 500);

@@ -98,12 +98,13 @@ public class MenuStage extends MyStage {
             });
         }
 
-        addActor(new MyTextButton("Beállítások"){
+        addActor(new MyTextButton(""){
 
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 50);
+                setSize(120,120);
+                setPosition(10, 260);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -111,7 +112,7 @@ public class MenuStage extends MyStage {
                         game.setScreen(new BGSelectScreen(game), true);
                     }
                 });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                setTexture(Assets.manager.get(Assets.SETTINGS_ICON));
                 enableTexture(true);
             }
         });
@@ -121,8 +122,8 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(10, 50);
                 setSize(150, 150);
+                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 50);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -138,8 +139,8 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(10, 260);
                 setSize(150,150);
+                setPosition(10, 80);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -159,11 +160,12 @@ public class MenuStage extends MyStage {
                 });
             }
         });
-        addActor(new MyTextButton("Készítők"){
+        addActor(new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 300);
+                setSize(150,150);
+                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 240);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -171,7 +173,7 @@ public class MenuStage extends MyStage {
                         game.setScreen(new CreditsScreen(game));
                     }
                 });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                setTexture(Assets.manager.get(Assets.TOKIN));
                 enableTexture(true);
             }
         });
