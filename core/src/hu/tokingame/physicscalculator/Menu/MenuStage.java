@@ -13,6 +13,7 @@ import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
+import hu.tokingame.physicscalculator.Credits.CreditsScreen;
 import hu.tokingame.physicscalculator.Exit.ExitScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
@@ -116,11 +117,12 @@ public class MenuStage extends MyStage {
         });
 
 
-        addActor(new MyTextButton("Kilépés"){
+        addActor(new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
-                setPosition(10, 100);
+                setPosition(10, 50);
+                setSize(150, 150);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -128,7 +130,7 @@ public class MenuStage extends MyStage {
                         game.setScreen(new ExitScreen(game), true);
                     }
                 });
-                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                setTexture(Assets.manager.get(Assets.EXITSIGN));
                 enableTexture(true);
             }
         });
@@ -136,8 +138,8 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(10, 300);
-                setSize(100,100);
+                setPosition(10, 250);
+                setSize(150,150);
                 if(Globals.sounds) setTexture(Assets.manager.get(Assets.MUSIC_ON));
                 else Assets.manager.get(Assets.MUSIC_OFF);
                 addListener(new ClickListener(){
@@ -155,6 +157,22 @@ public class MenuStage extends MyStage {
                         }
                     }
                 });
+            }
+        });
+        addActor(new MyTextButton("Készítők"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 300);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new CreditsScreen(game));
+                    }
+                });
+                setTexture(Assets.manager.get(Assets.STEELBUTTON));
+                enableTexture(true);
             }
         });
 

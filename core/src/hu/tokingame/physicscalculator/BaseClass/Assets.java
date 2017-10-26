@@ -43,6 +43,7 @@ public class Assets {
     public static final AssetDescriptor<BitmapFont> DIGITAL_7_FONT
             = new AssetDescriptor<BitmapFont>("digital-7.ttf", BitmapFont.class, fontParameter2);
 
+    public static final AssetDescriptor<Texture> TOKIN = new AssetDescriptor<Texture>("tokin.PNG", Texture.class);
     public static final AssetDescriptor<Texture> BUTTONBG = new AssetDescriptor<Texture>("buttonbg.png", Texture.class);
     public static final AssetDescriptor<Texture> STEELBUTTON = new AssetDescriptor<Texture>("steelbutton.png", Texture.class);
     public static final AssetDescriptor<Texture> POTATO = new AssetDescriptor<Texture>("potato.png", Texture.class);
@@ -60,6 +61,11 @@ public class Assets {
     public static final AssetDescriptor<Texture> MOON_ICON = new AssetDescriptor<Texture>("moon.png", Texture.class);
     public static final AssetDescriptor<Texture> MARS_ICON = new AssetDescriptor<Texture>("mars.png", Texture.class);
     public static final AssetDescriptor<Texture> JUPITER_ICON = new AssetDescriptor<Texture>("jupiter.png", Texture.class);
+    public static final AssetDescriptor<Texture> EXITSIGN = new AssetDescriptor<Texture>("exit.png", Texture.class);
+    public static final AssetDescriptor<Texture> EARTH_BG = new AssetDescriptor<Texture>("earth_bg.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> MOON_BG = new AssetDescriptor<Texture>("moon_bg.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> MARS_BG = new AssetDescriptor<Texture>("mars_bg.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> JUPITER_BG = new AssetDescriptor<Texture>("jupiter_bg.jpg", Texture.class);
 
 
 
@@ -86,6 +92,7 @@ public class Assets {
         manager.load(CALIBRIL_FONT);
         manager.load(DIGITAL_7_FONT);
 
+        manager.load(TOKIN);
         manager.load(BUTTONBG);
         manager.load(STEELBUTTON);
         manager.load(POTATO);
@@ -103,6 +110,11 @@ public class Assets {
         manager.load(MOON_ICON);
         manager.load(MARS_ICON);
         manager.load(JUPITER_ICON);
+        manager.load(EXITSIGN);
+        manager.load(EARTH_BG);
+        manager.load(MOON_BG);
+        manager.load(MARS_BG);
+        manager.load(JUPITER_BG);
 
         manager.load(MAIN_MUSIC);
 

@@ -124,6 +124,7 @@ public class SimulationStage extends BGStage {
             addActor(grafikon);
             addActor(potato1 = new ProjectileActor(0,0));
             addActor(potato2 = new ProjectileActor(0,0));
+            potato2.setVisible(false);
             addActor(cannon = new CannonActor(){
                 @Override
                 protected void init() {
@@ -215,6 +216,7 @@ public class SimulationStage extends BGStage {
                     potato1.stopSpinning();
                     timeOfSpinning = 0;
                     cannon.rotateTo(calculator.getAlpha()[1]-rotationOffset,potato2);
+                    potato2.setVisible(true);
                 }
             }
             if(potato2.isSpinning()){
