@@ -66,6 +66,10 @@ public class Assets {
     public static final AssetDescriptor<Texture> MOON_BG = new AssetDescriptor<Texture>("moon_bg.jpg", Texture.class);
     public static final AssetDescriptor<Texture> MARS_BG = new AssetDescriptor<Texture>("mars_bg.jpg", Texture.class);
     public static final AssetDescriptor<Texture> JUPITER_BG = new AssetDescriptor<Texture>("jupiter_bg.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> SPOOKY_ICON = new AssetDescriptor<Texture>("spokkky.png", Texture.class);
+    public static final AssetDescriptor<Texture> SPOOKY_BG = new AssetDescriptor<Texture>("spookybg.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> SPOOKY_PROJ = new AssetDescriptor<Texture>("spookyproj.png", Texture.class);
+    public static final AssetDescriptor<Texture> SPOOKY_TARGET = new AssetDescriptor<Texture>("spookytarget.png", Texture.class);
 
 
 
@@ -115,6 +119,10 @@ public class Assets {
         manager.load(MOON_BG);
         manager.load(MARS_BG);
         manager.load(JUPITER_BG);
+        manager.load(SPOOKY_BG);
+        manager.load(SPOOKY_ICON);
+        manager.load(SPOOKY_PROJ);
+        manager.load(SPOOKY_TARGET);
 
         manager.load(MAIN_MUSIC);
 

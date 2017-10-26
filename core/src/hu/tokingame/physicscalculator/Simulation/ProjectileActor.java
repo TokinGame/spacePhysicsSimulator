@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
+
 /**
  * Created by davim on 2017. 10. 12..
  */
@@ -22,6 +25,9 @@ public class ProjectileActor extends OneSpriteStaticActor {
         super(Assets.manager.get(Assets.POTATO));
         setSize(50, 50);
         setPosition(x, y);
+        if(bgs[bgIndex] == Assets.SPOOKY_BG){
+            this.setTexture(Assets.manager.get(Assets.SPOOKY_TARGET));
+        }
     }
     public void stopSpinning(){
         spinning = false;
