@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyScreen;
+import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteAnimatedActor;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.Menu.MenuScreen;
@@ -17,7 +18,7 @@ import hu.tokingame.physicscalculator.MyGdxGame;
 
 public class BetoltoScreen extends MyScreen {
 
-    Stage stage;
+    MyStage stage;
 
     private float elapsedTime = 0;
     private OneSpriteStaticActor backGround;
@@ -25,11 +26,13 @@ public class BetoltoScreen extends MyScreen {
     public BetoltoScreen(MyGdxGame game) {
         super(game);
         setBackGroundColor(0f, 0f, 0f);
-        stage = new Stage(viewport, spriteBatch);
-        //stage.addActor(backGround= new OneSpriteStaticActor("wood.png"));
-        //backGround.setSize(MyScreen.WORLD_WIDTH,MyScreen.WORLD_HEIGHT);
-        //backGround.setPosition(0,0);
-        /*stage.addActor(new OneSpriteAnimatedActor("spookyloading.txt")
+        stage = new MyStage(game){
+            @Override
+            protected void init() {
+
+            }
+        };
+        stage.addActor(new OneSpriteAnimatedActor("spookyloading.txt")
         {
             @Override
             protected void init() {
@@ -38,7 +41,7 @@ public class BetoltoScreen extends MyScreen {
                 setSize(200,200);
                 setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, Globals.WORLD_HEIGHT/2-this.getHeight()/2);
             }
-        });*/
+        });
     }
 
     @Override
