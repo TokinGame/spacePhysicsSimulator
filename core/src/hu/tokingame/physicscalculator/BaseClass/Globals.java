@@ -20,7 +20,7 @@ public class Globals {
 
     public static final boolean IS_DEBUG = true;
 
-    public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE, Assets.JUPITER_ICON};
+    public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.EARTH_ICON, Assets.MOON_ICON, Assets.MARS_ICON, Assets.JUPITER_ICON};
     public static int bgIndex = 0;
 
     public static final float[] gForces = {9.81f, 1.62f, 3.71f, 24.79f};

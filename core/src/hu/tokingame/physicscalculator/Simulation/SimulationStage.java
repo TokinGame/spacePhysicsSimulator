@@ -147,7 +147,7 @@ public class SimulationStage extends BGStage {
                 @Override
                 protected void init() {
                     super.init();
-                    setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 10);
+                    setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, Globals.WORLD_HEIGHT-this.getHeight()-10);
                     addListener(new ClickListener(){
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
