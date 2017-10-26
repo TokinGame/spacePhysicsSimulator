@@ -103,7 +103,7 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 100);
+                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 50);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -138,7 +138,7 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(10, 250);
+                setPosition(10, 260);
                 setSize(150,150);
                 if(Globals.sounds) setTexture(Assets.manager.get(Assets.MUSIC_ON));
                 else Assets.manager.get(Assets.MUSIC_OFF);
