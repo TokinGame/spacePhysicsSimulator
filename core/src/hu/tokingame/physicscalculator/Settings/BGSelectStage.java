@@ -175,7 +175,7 @@ public class BGSelectStage extends BGStage {
 
     public void showGravity(int ind){
 
-        gravityLabel.setText(planets[ind] + " - gravitáció: "+gForces[ind] + " m/s2");
+        gravityLabel.setText(planets[ind] + " - gravitáció: "+gForces[ind] + " m/s\u00B2");
         gravityLabel.setPosition(Globals.WORLD_WIDTH/2-gravityLabel.getWidth()/2, 200);
 
     }

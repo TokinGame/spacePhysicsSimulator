@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 
 public class Globals {
-    public static final String CHARS = "0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm'+!%/=()ÖÜÓQWERTZUIOPŐÚASDFGHJKLÉÁŰÍYXCVBNM?:_*<>#&@{}[],-.°α₁₂";
+    public static final String CHARS = "0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm'+!%/=()ÖÜÓQWERTZUIOPŐÚASDFGHJKLÉÁŰÍYXCVBNM?:_*<>#&@{}[],-.°α₁₂²";
    // public static final BitmapFont FONT_HOBO_STD;
    // public static final BitmapFont FONT_DIGITAL_7;
 
