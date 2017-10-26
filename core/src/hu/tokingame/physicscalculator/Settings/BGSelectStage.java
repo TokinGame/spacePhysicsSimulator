@@ -23,6 +23,7 @@ import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIcons;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
 import static hu.tokingame.physicscalculator.BaseClass.Globals.gForces;
@@ -155,7 +156,7 @@ public class BGSelectStage extends BGStage {
 
 
     public void addBGShowCase(){
-        for (AssetDescriptor<Texture> bg: bgs) {
+        for (AssetDescriptor<Texture> bg: bgIcons) {
             BGShowcaseActor actor = new BGShowcaseActor(Assets.manager.get(bg));
             actors.add(actor);
             addActor(actor);
