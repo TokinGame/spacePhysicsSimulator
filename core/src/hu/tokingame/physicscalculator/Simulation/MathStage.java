@@ -167,13 +167,34 @@ public class MathStage extends MyStage {
         ered.setVisible(false);
         eredmeny.setVisible(false);
 
-        if(mode == 1){
+
             szam1.setPosition(350, 600);
             szam2.setPosition(350, 500);
             szam3.setPosition(350, 400);
             szam1.setSize(210, 60);
             szam2.setSize(210, 60);
             szam3.setSize(210, 60);
+            addActor(new MyTextButton("m/s"){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(560, 600);
+                }
+            });
+        addActor(new MyTextButton("m"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(560, 500);
+            }
+        });
+        addActor(new MyTextButton("m"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(560, 400);
+            }
+        });
             szovegcucc.addListener(new ClickListener(){
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -235,9 +256,7 @@ public class MathStage extends MyStage {
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                 }
             });
-        }else{
 
-        }
 
 
 

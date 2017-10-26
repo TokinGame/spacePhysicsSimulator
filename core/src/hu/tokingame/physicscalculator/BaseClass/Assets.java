@@ -56,6 +56,10 @@ public class Assets {
     public static final AssetDescriptor<Texture> MUSIC_ON = new AssetDescriptor<Texture>("kazetta.png", Texture.class);
     public static final AssetDescriptor<Texture> MUSIC_OFF = new AssetDescriptor<Texture>("kazetta_athuz.png", Texture.class);
     public static final AssetDescriptor<Texture> FULLHATTER = new AssetDescriptor<Texture>("hatter_fullacel.png", Texture.class);
+    public static final AssetDescriptor<Texture> EARTH_ICON = new AssetDescriptor<Texture>("planet_earth.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> MOON_ICON = new AssetDescriptor<Texture>("moon.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> MARS_ICON = new AssetDescriptor<Texture>("mars.jpg", Texture.class);
+    public static final AssetDescriptor<Texture> JUPITER_ICON = new AssetDescriptor<Texture>("jupiter.jpg", Texture.class);
 
 
 
@@ -95,6 +99,10 @@ public class Assets {
         manager.load(MUSIC_OFF);
         manager.load(MUSIC_ON);
         manager.load(FULLHATTER);
+        manager.load(EARTH_ICON);
+        manager.load(MOON_ICON);
+        manager.load(MARS_ICON);
+        manager.load(JUPITER_ICON);
 
         manager.load(MAIN_MUSIC);
 

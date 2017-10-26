@@ -20,11 +20,11 @@ public class Globals {
 
     public static final boolean IS_DEBUG = true;
 
-    public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
+    public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE, Assets.JUPITER_ICON};
     public static int bgIndex = 0;
 
-    public static final float[] gForces = {9.81f, 1.62f, 3.71f};
-    public static final String[] planets = {"Föld", "Hold", "Mars"};
+    public static final float[] gForces = {9.81f, 1.62f, 3.71f, 24.79f};
+    public static final String[] planets = {"Föld", "Hold", "Mars", "Jupiter"};
 
     public static boolean sounds = true;
 
