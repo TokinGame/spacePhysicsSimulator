@@ -16,6 +16,7 @@ import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
+import jdk.nashorn.internal.objects.Global;
 
 /**
  * Created by davim on 2016. 10. 07..
@@ -67,9 +68,19 @@ public class MathStage extends MyStage {
             }
         });
 
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.MONITOR)){
+            @Override
+            protected void init() {
+                super.init();
+                setSize(400, 400);
+                setPosition(290, 330);
+            }
+        });
+
         stage.addActor(inputButtons = new InputButtons(stage));
         inputButtons.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
         inputButtons.setPosition(1280,0);
+
 
 
 
@@ -100,7 +111,7 @@ public class MathStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(500, 10);
+                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 10);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -117,7 +128,7 @@ public class MathStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(500, 100);
+                setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, 100);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -129,6 +140,9 @@ public class MathStage extends MyStage {
                             successfulCalculation();
                             ered.setVisible(true);
                             eredmeny.setVisible(true);
+                            Globals.actualValues[0] = calculator.getV0();
+                            Globals.actualValues[1] = calculator.getX();
+                            Globals.actualValues[2] = calculator.getY();
                         }catch (NumberFormatException e){
                             eredmeny.setText("Valamelyik mezőt nem töltötted ki!");
                             eredmeny.setVisible(true);
@@ -147,17 +161,17 @@ public class MathStage extends MyStage {
 
 
         addActor(szovegcucc = new MyTextButton("Sebesség: ", null));
-        szovegcucc.setPosition(50, 600);
+        szovegcucc.setPosition(20, 600);
         szovegcucc.setSize(250, 60);
         szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc.enableTexture(true);
         addActor(szovegcucc2 = new MyTextButton("Távolság: ", null));
-        szovegcucc2.setPosition(50, 500);
+        szovegcucc2.setPosition(20, 500);
         szovegcucc2.setSize(250, 60);
         szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc2.enableTexture(true);
         addActor(szovegcucc3 = new MyTextButton("Magasság: ", null));
-        szovegcucc3.setPosition(50, 400);
+        szovegcucc3.setPosition(20, 400);
         szovegcucc3.setSize(250, 60);
         szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
         szovegcucc3.enableTexture(true);
@@ -264,6 +278,14 @@ public class MathStage extends MyStage {
 
 
     }
+
+
+    public void setValuesBack(){
+        szam1.setText((int)Globals.actualValues[0]+"");
+        szam2.setText((int)Globals.actualValues[1]+"");
+        szam3.setText((int)Globals.actualValues[2]+"");
+    }
+
 
 
     public void refresh() {

@@ -73,6 +73,8 @@ public class Assets {
     public static final AssetDescriptor<Texture> SPOOKY_TARGET = new AssetDescriptor<Texture>("spookytarget.png", Texture.class);
     public static final AssetDescriptor<Texture> SETTINGS_ICON = new AssetDescriptor<Texture>("gear_icon.png", Texture.class);
     public static final AssetDescriptor<Texture> CONSOLE_BG = new AssetDescriptor<Texture>("console.png", Texture.class);
+    public static final AssetDescriptor<Texture> MONITOR = new AssetDescriptor<Texture>("monitor.png", Texture.class);
+
     //</editor-fold>
 
 
@@ -128,6 +130,7 @@ public class Assets {
         manager.load(SPOOKY_TARGET);
         manager.load(SETTINGS_ICON);
         manager.load(CONSOLE_BG);
+        manager.load(MONITOR);
 
         manager.load(MAIN_MUSIC);
 

@@ -92,8 +92,8 @@ public class InputButtons extends Group {
         b9.setSize(100,100);
         b0.setSize(100,100);
 
-        close.setPosition(800, 100);
-        delete.setPosition(1000, 100);
+        close.setPosition(800, 94);
+        delete.setPosition(1000, 94);
 
         addActor(b1);
         addActor(b2);

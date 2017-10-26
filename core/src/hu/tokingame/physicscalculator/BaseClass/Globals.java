@@ -34,4 +34,6 @@ public class Globals {
 
     public static boolean sounds = prefs.getBoolean("sounds", true);
 
+    public static float[] actualValues = {0f, 0f, 0f};
+
 }

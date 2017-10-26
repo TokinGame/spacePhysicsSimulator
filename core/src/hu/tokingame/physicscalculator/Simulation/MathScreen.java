@@ -21,6 +21,12 @@ public class MathScreen extends MyScreen {
     }
 
     @Override
+    public void backFromStack() {
+        super.backFromStack();
+        mathStage.setValuesBack();
+    }
+
+    @Override
     public void render(float delta) {
         super.render(delta);
         mathStage.act(delta);
