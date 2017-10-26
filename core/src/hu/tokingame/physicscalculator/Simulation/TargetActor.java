@@ -15,7 +15,7 @@ public class TargetActor extends OneSpriteStaticActor {
 
     public TargetActor(float x , float y) {
         super(Assets.manager.get(Assets.TARGET));
-        setSize(160, 87.5f);
+        setSize(151, 150);
         setOrigin(getWidth()/2, getHeight()/2);
         setPosition(x, y);
     }

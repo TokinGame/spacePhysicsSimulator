@@ -10,6 +10,7 @@ import hu.tokingame.physicscalculator.BaseClass.Globals;
 import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
+import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
 import hu.tokingame.physicscalculator.Menu.MenuScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 
@@ -31,6 +32,15 @@ public class ExitStage extends MyStage {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
 
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.FULLHATTER)){
+            @Override
+            protected void init() {
+                super.init();
+                setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+                setPosition(0,0);
+            }
+        });
+
         addActor(uzi=new MyLabel("Biztosan hátra akarod hagyni az űrkutatást?",MyLabel.style));
         uzi.setPosition(Globals.WORLD_WIDTH/2-uzi.getWidth()/2f, Globals.WORLD_HEIGHT/2-uzi.getHeight()/2f+200);
 
@@ -38,7 +48,7 @@ public class ExitStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH-this.getWidth()-10, 10);
+                setPosition(Globals.WORLD_WIDTH-this.getWidth()-100, 100);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -55,7 +65,7 @@ public class ExitStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(10, 10);
+                setPosition(100, 100);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
