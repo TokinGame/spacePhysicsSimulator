@@ -56,7 +56,7 @@ public class BGSelectStage extends BGStage {
     public BGSelectStage(Viewport viewport, Batch batch, final MyGdxGame game) {
         super(viewport, batch, game);
         Gdx.input.setCatchBackKey(true);
-        this.setDebugAll(true);
+        this.setDebugAll(Globals.IS_DEBUG);
 
 
         addBGShowCase();

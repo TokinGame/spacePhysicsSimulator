@@ -306,7 +306,7 @@ public class MathStage extends MyStage {
 
 
         refresh();
-        setDebugAll(true);
+        setDebugAll(Globals.IS_DEBUG);
     }
 }
 
