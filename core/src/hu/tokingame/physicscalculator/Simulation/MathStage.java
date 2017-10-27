@@ -55,7 +55,8 @@ public class MathStage extends MyStage {
                 "Ha a célpont nem érhető el ezzel a sebességel\n"+
                 "akkor a 'nem létezik ilyen szög' felirat jelenik meg\n"+
                 "Ha a szöget sikerült kiszámolni, a röppálya\n"+
-                "megtekinthető a szimulálás gomb megnyomásával.";
+                "megtekinthető a szimulálás gomb megnyomásával.\n"+
+                "A súgú bezárásához nyomj ide.";
 
     private boolean isHelping  = false;
 
@@ -297,7 +298,7 @@ public class MathStage extends MyStage {
                             super.clicked(event, x, y);
                             if(!isHelping){
                                 isHelping = true;
-                                addActor(new MyLabel(helpstr, MyLabel.style4){
+                                addActor(new MyLabel(helpstr, MyLabel.style5){
                                     @Override
                                     protected void init() {
                                         super.init();

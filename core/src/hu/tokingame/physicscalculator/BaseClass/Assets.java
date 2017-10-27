@@ -79,6 +79,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> MONITOR = new AssetDescriptor<Texture>("monitor.png", Texture.class);
     public static final AssetDescriptor<Texture> LAUNCHBUTTON = new AssetDescriptor<Texture>("launch-button.png", Texture.class);
     public static final AssetDescriptor<Texture> LABLE_BG = new AssetDescriptor<Texture>("lablebg.png", Texture.class);
+    public static final AssetDescriptor<Texture> LABEl_BG_2 = new AssetDescriptor<Texture>("lablebg2.png", Texture.class);
     public static final AssetDescriptor<Texture> HELP = new AssetDescriptor<Texture>("question.png", Texture.class);
     //</editor-fold>
 
@@ -140,6 +141,7 @@ public class Assets {
         manager.load(LAUNCHBUTTON);
         manager.load(LABLE_BG);
         manager.load(HELP);
+        manager.load(LABEl_BG_2);
 
         manager.load(MAIN_MUSIC);
         manager.load(SPOOKY_MUSIC);

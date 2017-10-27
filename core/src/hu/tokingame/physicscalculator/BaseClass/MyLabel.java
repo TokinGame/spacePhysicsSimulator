@@ -16,7 +16,7 @@ public class MyLabel extends Label {
     float elapsedtime =0;
     public static LabelStyle style;
     public static LabelStyle style2;
-    public static LabelStyle style3 ,style4;
+    public static LabelStyle style3, style4, style5;
 
     static {
         refresh();
@@ -42,6 +42,10 @@ public class MyLabel extends Label {
         style4 = new LabelStyle();
         style4.font = Assets.manager.get(Assets.CALIBRIL_FONT);
         style4.background = new TextureRegionDrawable(new TextureRegion(Assets.manager.get(Assets.LABLE_BG)));
+
+        style5 = new LabelStyle();
+        style5.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+        style5.background = new TextureRegionDrawable(new TextureRegion(Assets.manager.get(Assets.LABEl_BG_2)));
     }
 
     public MyLabel(String text) {
