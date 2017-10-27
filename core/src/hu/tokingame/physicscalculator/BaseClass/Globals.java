@@ -18,7 +18,7 @@ public class Globals {
     public static final int WORLD_WIDTH = 1280;
     public static final int WORLD_HEIGHT = 720;
 
-    public static final int maximumInputLength = 8;
+    public static final int maximumInputLength = 6;
 
     public static final Preferences prefs = Gdx.app.getPreferences("mainPrefs");
     
