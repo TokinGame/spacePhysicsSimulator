@@ -26,7 +26,7 @@ public class BetoltoScreen extends MyScreen {
     public BetoltoScreen(MyGdxGame game) {
         super(game);
         setBackGroundColor(0f, 0f, 0f);
-        stage = new MyStage(game){
+        stage = new MyStage(viewport, spriteBatch, game){
             @Override
             protected void init() {}
         };
