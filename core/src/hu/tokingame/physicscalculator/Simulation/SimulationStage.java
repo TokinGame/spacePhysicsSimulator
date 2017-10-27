@@ -5,13 +5,16 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.physicscalculator.BaseClass.Assets;
 import hu.tokingame.physicscalculator.BaseClass.BGStage;
 import hu.tokingame.physicscalculator.BaseClass.Globals;
+import hu.tokingame.physicscalculator.BaseClass.MyLabel;
 import hu.tokingame.physicscalculator.BaseClass.MyStage;
 import hu.tokingame.physicscalculator.BaseClass.MyTextButton;
 import hu.tokingame.physicscalculator.BaseClass.OneSpriteStaticActor;
@@ -156,6 +159,32 @@ public class SimulationStage extends BGStage {
                             game.setScreenBackByStackPop();
                         }
                     });
+                }
+            });
+
+            addActor(new MyLabel("\u03B1\u2081: " + Math.round(calculator.getAlpha()[0]* 100) / 100.0f + "°", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    try {
+                        setPosition(calculator.getWidth(calculator.getDuration(1)/2.0f,1) * scale, calculator.getHeight(calculator.getDuration(1)/2.0f,1) * scale);
+                        setScale(0.75f);
+                        setFontScale(0.75f);
+                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                    }catch (Exception e){}
+                }
+            });
+
+            addActor(new MyLabel("\u03B1\u2082: " + Math.round(calculator.getAlpha()[1]* 100) / 100.0f + "°", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    try {
+                        setPosition(calculator.getWidth(calculator.getDuration(2)/2.0f,2) * scale, calculator.getHeight(calculator.getDuration(2)/2.0f,2) * scale);
+                        setScale(0.75f);
+                        setFontScale(0.75f);
+                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                    }catch (Exception e){}
                 }
             });
         }

@@ -2,7 +2,10 @@ package hu.tokingame.physicscalculator.BaseClass;
 
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 
 /**
@@ -13,7 +16,7 @@ public class MyLabel extends Label {
     float elapsedtime =0;
     public static LabelStyle style;
     public static LabelStyle style2;
-    public static LabelStyle style3;
+    public static LabelStyle style3 ,style4;
 
     static {
         refresh();
@@ -26,7 +29,6 @@ public class MyLabel extends Label {
 
         style.fontColor = Color.WHITE;
 
-
         style2 = new LabelStyle();
         style2.font = Assets.manager.get(Assets.DIGITAL_7_FONT);
 
@@ -36,16 +38,26 @@ public class MyLabel extends Label {
         style3 = new LabelStyle();
         style3.font = Assets.manager.get(Assets.CALIBRIL_FONT);
         style3.fontColor = Color.BLACK;
+
+        style4 = new LabelStyle();
+        style4.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+        style4.background = new TextureRegionDrawable(new TextureRegion(Assets.manager.get(Assets.LABLE_BG)));
     }
 
     public MyLabel(String text) {
         super(text, style);
         setAlignment(Align.center);
+        init();
+    }
+
+    protected void init(){
+
     }
 
 
     public MyLabel(CharSequence text, LabelStyle style) {
         super(text, style);
+        init();
     }
 
     @Override
