@@ -22,10 +22,12 @@ import hu.tokingame.physicscalculator.Menu.MenuScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.IS_DEBUG;
+
 
 public class SimulationStage extends BGStage {
 
-    float elapsedtime = 0;
+    float elapsedtime = 0, p1Ftime = 0, p2Ftime = 0;
 
     private float timeOfSpinning = 0;
 
@@ -48,8 +50,8 @@ public class SimulationStage extends BGStage {
     Pixmap pixmap;
     TargetActor target;
     CannonActor cannon;
+    MyLabel p1Time, p2Time;
 
-    // TODO: 10/25/2017 Ez azért kell mert az ágyú textúra 45 fokban áll. EZ NE MARADJON ÍGY
     private final float rotationOffset = 45;
 
     int h = 1000;
@@ -80,8 +82,10 @@ public class SimulationStage extends BGStage {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("-Scale-");
-        System.out.println(scale);
+        if(IS_DEBUG){
+            System.out.println("-Scale-");
+            System.out.println(scale);
+        }
         int pmheight = pixmap.getHeight();
         int pmwidth = pixmap.getWidth();
         try {
@@ -117,7 +121,7 @@ public class SimulationStage extends BGStage {
         }finally{
             grafikon = new OneSpriteStaticActor(new Texture(pixmap));
             grafikon.setPosition(0,0);
-            if(Globals.IS_DEBUG){
+            if(IS_DEBUG){
                 grafikon.debug();
                 setDebugAll(true);
             }
@@ -147,6 +151,66 @@ public class SimulationStage extends BGStage {
                     setPosition(0,0);
                 }
             });
+
+
+            addActor(new MyLabel("\u03B1\u2081: " + Math.round(calculator.getAlpha()[0]* 100) / 100.0f + "°", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    try {
+                        setPosition(calculator.getWidth(calculator.getDuration(1)/2.0f,1) * scale, calculator.getHeight(calculator.getDuration(1)/2.0f,1) * scale);
+                        setScale(0.75f);
+                        setFontScale(0.75f);
+                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                    }catch (Exception e){}
+                }
+            });
+
+            addActor(new MyLabel("\u03B1\u2082: " + Math.round(calculator.getAlpha()[1]* 100) / 100.0f + "°", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    try {
+                        setPosition(calculator.getWidth(calculator.getDuration(2)/2.0f,2) * scale, calculator.getHeight(calculator.getDuration(2)/2.0f,2) * scale);
+                        setScale(0.75f);
+                        setFontScale(0.75f);
+                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                    }catch (Exception e){}
+                }
+            });
+
+            addActor(new MyLabel("X: "+(int)calc.getX()+"m; Y: "+(int)calc.getY()+"m", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(target.getX()+target.getWidth()/2-this.getWidth()/2, target.getY()+target.getHeight());
+                    setScale(0.75f);
+                    setFontScale(0.75f);
+                    setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                }
+            });
+
+            addActor(p1Time = new MyLabel("0.0 s", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(potato1.getX(), potato1.getY());
+                    setScale(0.75f);
+                    setFontScale(0.75f);
+                    setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                }
+            });
+            addActor(p2Time = new MyLabel("0.0 s", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(potato1.getX(), potato1.getY());
+                    setScale(0.75f);
+                    setFontScale(0.75f);
+                    setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                }
+            });
+
             addActor(new MyTextButton("Vissza"){
                 @Override
                 protected void init() {
@@ -173,32 +237,6 @@ public class SimulationStage extends BGStage {
                             game.setScreen(new SimulationScreen(game, calculator), false);
                         }
                     });
-                }
-            });
-
-            addActor(new MyLabel("\u03B1\u2081: " + Math.round(calculator.getAlpha()[0]* 100) / 100.0f + "°", MyLabel.style4){
-                @Override
-                protected void init() {
-                    super.init();
-                    try {
-                        setPosition(calculator.getWidth(calculator.getDuration(1)/2.0f,1) * scale, calculator.getHeight(calculator.getDuration(1)/2.0f,1) * scale);
-                        setScale(0.75f);
-                        setFontScale(0.75f);
-                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
-                    }catch (Exception e){}
-                }
-            });
-
-            addActor(new MyLabel("\u03B1\u2082: " + Math.round(calculator.getAlpha()[1]* 100) / 100.0f + "°", MyLabel.style4){
-                @Override
-                protected void init() {
-                    super.init();
-                    try {
-                        setPosition(calculator.getWidth(calculator.getDuration(2)/2.0f,2) * scale, calculator.getHeight(calculator.getDuration(2)/2.0f,2) * scale);
-                        setScale(0.75f);
-                        setFontScale(0.75f);
-                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
-                    }catch (Exception e){}
                 }
             });
         }
@@ -251,10 +289,17 @@ public class SimulationStage extends BGStage {
         super.act(delta);
         elapsedtime += delta;
 
+
+
+
         try {
             if(potato1.isSpinning()){
                 timeOfSpinning += delta;
+                p1Ftime += delta;
                 potato1.setPosition(calculator.getWidth(timeOfSpinning, 1)*scale, calculator.getHeight(timeOfSpinning, 1)*scale);
+                p1Time.setPosition(potato1.getX(), potato1.getY()+potato1.getHeight());
+                p1Time.setText(Math.floor(p1Ftime*10)/10f+" s");
+                //p1Time.setSize(p1Time.getWidth() * 0.75f, p1Time.getHeight() * 0.75f);
                 if(timeOfSpinning > calculator.getDuration(1)) {
                     potato1.stopSpinning();
                     timeOfSpinning = 0;
@@ -264,7 +309,11 @@ public class SimulationStage extends BGStage {
             }
             if(potato2.isSpinning()){
                 timeOfSpinning += delta;
+                p2Ftime += delta;
                 potato2.setPosition(calculator.getWidth(timeOfSpinning, 2)*scale, calculator.getHeight(timeOfSpinning, 2)*scale);
+                p2Time.setPosition(potato2.getX(), potato2.getY()+potato2.getHeight());
+                p2Time.setText(Math.floor(p2Ftime*10)/10f+" s");
+               // p2Time.setSize(p2Time.getWidth() * 0.75f, p2Time.getHeight() * 0.75f);
                 if(timeOfSpinning > calculator.getDuration(2)){
                     potato2.stopSpinning();
                 }

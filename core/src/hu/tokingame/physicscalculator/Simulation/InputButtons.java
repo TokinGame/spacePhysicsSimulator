@@ -36,12 +36,12 @@ public class InputButtons extends Group {
 
     private final InputButtons btns = this;
 
+    private int selected;
 
 
     public InputButtons(MathStage stage) {
         this.setVisible(false);
         setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
-
         mathStage = stage;
 
 
@@ -67,7 +67,6 @@ public class InputButtons extends Group {
         b9 = new MyTextButton("9");
         b0 = new MyTextButton("0");
         close = new MyTextButton("Bezár");
-        //TODO minek
         delete = new MyTextButton("Backspace");
 
         b1.setPosition(800, 500);
@@ -198,13 +197,13 @@ public class InputButtons extends Group {
 
     void iras(String t){
         if(var != null){
+            if(t.equals("bsp")){
+                if(var.getText().length < 1) return;
+                var.setText(var.getText().substring(0,var.getText().length()-1));
+                return;
+            }
             if(var.getText().length() < Globals.maximumInputLength){
-                if(t.equals("bsp")){
-                    if(var.getText().length < 1) return;
-                    var.setText(var.getText().substring(0,var.getText().length()-1));
-                    return;
-                }
-                if(t.equals("0")){
+                if(t.equals("0") && selected != 3){
                     if(var.getText().length() != 0) var.setText(var.getText()+t);
                 }else {
                     var.setText(var.getText()+t);
@@ -220,8 +219,9 @@ public class InputButtons extends Group {
         super.act(delta);
     }
 
-    public void show(MyLabel szoveg){
+    public void show(MyLabel szoveg, int selected){
         var = szoveg;
+        this.selected = selected;
         if(!this.isVisible()){
             this.setVisible(true);
             this.setPosition(Globals.WORLD_WIDTH-750,0);

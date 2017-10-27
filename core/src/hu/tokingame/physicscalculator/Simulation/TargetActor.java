@@ -23,6 +23,7 @@ public class TargetActor extends OneSpriteStaticActor {
         setPosition(x, y);
         if(bgs[bgIndex] == Assets.SPOOKY_BG){
             this.setTexture(Assets.manager.get(Assets.SPOOKY_PROJ));
+            this.setSize(200,200);
         }
     }
 

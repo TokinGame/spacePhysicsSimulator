@@ -18,11 +18,10 @@ public class Globals {
     public static final int WORLD_WIDTH = 1280;
     public static final int WORLD_HEIGHT = 720;
 
-    public static final int maximumInputLength = 8;
+    public static final int maximumInputLength = 6;
 
     public static final Preferences prefs = Gdx.app.getPreferences("mainPrefs");
     
-    //// TODO: 10/26/2017 Állítsd át false-ra
     public static final boolean IS_DEBUG = false;
 
     public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.EARTH_BG, Assets.MOON_BG, Assets.MARS_BG, Assets.JUPITER_BG, Assets.SPOOKY_BG};

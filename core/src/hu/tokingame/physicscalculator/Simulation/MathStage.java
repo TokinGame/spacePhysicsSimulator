@@ -45,6 +45,20 @@ public class MathStage extends MyStage {
 
     MathStage stage;
 
+
+    String helpstr = "A röppálya kiszámításához szükséges adatok:\n"+
+                "- kezdeti sebesség\n"+
+                "- célpont távolsága\n"+
+                "- célpont magassága\n"+
+                "A kilövési szögek meghatározásához nyomd meg\n"+
+                "a számolás gombot.\n"+
+                "Ha a célpont nem érhető el ezzel a sebességel\n"+
+                "akkor a 'nem létezik ilyen szög' felirat jelenik meg\n"+
+                "Ha a szöget sikerült kiszámolni, a röppálya\n"+
+                "megtekinthető a szimulálás gomb megnyomásával.";
+
+    private boolean isHelping  = false;
+
     public MathStage(Viewport viewport, Batch batch, final MyGdxGame game) {
 
         super(viewport, batch, game);
@@ -56,7 +70,6 @@ public class MathStage extends MyStage {
             @Override
             protected void onChanged() {
                 super.onChanged();
-                //Todo frissíteni a staget
             }
         };
 
@@ -213,7 +226,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam1);
+                    inputButtons.show(szam1,1);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -223,7 +236,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam2);
+                    inputButtons.show(szam2,2);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -233,7 +246,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam3);
+                    inputButtons.show(szam3,3);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
@@ -244,7 +257,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam1);
+                    inputButtons.show(szam1,1);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -254,7 +267,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam2);
+                    inputButtons.show(szam2,2);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -264,7 +277,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam3);
+                    inputButtons.show(szam3,3);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
@@ -272,7 +285,38 @@ public class MathStage extends MyStage {
             });
 
 
-
+            addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.HELP)){
+                @Override
+                protected void init() {
+                    super.init();
+                    setSize(100, 100);
+                    setPosition(10, 10);
+                    addListener(new ClickListener(){
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            if(!isHelping){
+                                isHelping = true;
+                                addActor(new MyLabel(helpstr, MyLabel.style4){
+                                    @Override
+                                    protected void init() {
+                                        super.init();
+                                        setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, Globals.WORLD_HEIGHT/2-this.getHeight()/2);
+                                        addListener(new ClickListener(){
+                                            @Override
+                                            public void clicked(InputEvent event, float x, float y) {
+                                                super.clicked(event, x, y);
+                                                isHelping = false;
+                                                remove();
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
 
 
 
