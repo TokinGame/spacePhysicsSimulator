@@ -123,7 +123,6 @@ public class BGSelectStage extends BGStage {
                         super.clicked(event, x, y);
                         if(!btnDisabled){
                             changeBG();
-                            Calculator.setG(gForces[index]);
                         }
                     }
                 });
@@ -192,6 +191,7 @@ public class BGSelectStage extends BGStage {
         bgIndex = index;
         prefs.putInteger("bgIndex", index);
         prefs.flush();
+        Calculator.setG(gForces[index]);
         if(Globals.sounds){
             if(bgs[bgIndex] == Assets.SPOOKY_BG) {
                 Assets.manager.get(Assets.MAIN_MUSIC).stop();

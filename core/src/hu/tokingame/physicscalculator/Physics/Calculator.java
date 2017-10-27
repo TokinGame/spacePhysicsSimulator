@@ -5,6 +5,8 @@ import sun.nio.cs.Surrogate;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static hu.tokingame.physicscalculator.BaseClass.Globals.IS_DEBUG;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.gForces;
 import static hu.tokingame.physicscalculator.Physics.MathUtils.sqr;
 import static hu.tokingame.physicscalculator.Physics.MathUtils.dToF;
 import static hu.tokingame.physicscalculator.Physics.MathUtils.fToD;
@@ -14,7 +16,7 @@ import static hu.tokingame.physicscalculator.Physics.MathUtils.fToD;
  */
 
 public class Calculator {
-    public static float g = 9.81f;
+    private static float g = gForces[bgIndex];
 
     float v0 = 0f;
     float x = 0f;
