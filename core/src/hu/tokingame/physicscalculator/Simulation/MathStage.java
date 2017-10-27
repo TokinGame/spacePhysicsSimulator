@@ -57,6 +57,8 @@ public class MathStage extends MyStage {
                 "Ha a szöget sikerült kiszámolni, a röppálya\n"+
                 "megtekinthető a szimulálás gomb megnyomásával.";
 
+    private boolean isHelping  = false;
+
     public MathStage(Viewport viewport, Batch batch, final MyGdxGame game) {
 
         super(viewport, batch, game);
@@ -294,20 +296,24 @@ public class MathStage extends MyStage {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
                             super.clicked(event, x, y);
-                            addActor(new MyLabel(helpstr, MyLabel.style4){
-                                @Override
-                                protected void init() {
-                                    super.init();
-                                    setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, Globals.WORLD_HEIGHT/2-this.getHeight()/2);
-                                    addListener(new ClickListener(){
-                                        @Override
-                                        public void clicked(InputEvent event, float x, float y) {
-                                            super.clicked(event, x, y);
-                                            remove();
-                                        }
-                                    });
-                                }
-                            });
+                            if(!isHelping){
+                                isHelping = true;
+                                addActor(new MyLabel(helpstr, MyLabel.style4){
+                                    @Override
+                                    protected void init() {
+                                        super.init();
+                                        setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, Globals.WORLD_HEIGHT/2-this.getHeight()/2);
+                                        addListener(new ClickListener(){
+                                            @Override
+                                            public void clicked(InputEvent event, float x, float y) {
+                                                super.clicked(event, x, y);
+                                                isHelping = false;
+                                                remove();
+                                            }
+                                        });
+                                    }
+                                });
+                            }
                         }
                     });
                 }
