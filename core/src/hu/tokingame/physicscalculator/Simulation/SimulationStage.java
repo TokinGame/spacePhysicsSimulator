@@ -52,7 +52,6 @@ public class SimulationStage extends BGStage {
     CannonActor cannon;
     MyLabel p1Time, p2Time;
 
-    // TODO: 10/25/2017 Ez azért kell mert az ágyú textúra 45 fokban áll. EZ NE MARADJON ÍGY
     private final float rotationOffset = 45;
 
     int h = 1000;

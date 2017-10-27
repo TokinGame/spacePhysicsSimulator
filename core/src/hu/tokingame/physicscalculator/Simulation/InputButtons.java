@@ -67,7 +67,6 @@ public class InputButtons extends Group {
         b9 = new MyTextButton("9");
         b0 = new MyTextButton("0");
         close = new MyTextButton("Bezár");
-        //TODO minek
         delete = new MyTextButton("Backspace");
 
         b1.setPosition(800, 500);

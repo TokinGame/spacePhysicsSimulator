@@ -68,7 +68,6 @@ public class MathStage extends MyStage {
             @Override
             protected void onChanged() {
                 super.onChanged();
-                //Todo frissíteni a staget
             }
         };
 
