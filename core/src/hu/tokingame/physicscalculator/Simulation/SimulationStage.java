@@ -147,6 +147,45 @@ public class SimulationStage extends BGStage {
                     setPosition(0,0);
                 }
             });
+
+
+            addActor(new MyLabel("\u03B1\u2081: " + Math.round(calculator.getAlpha()[0]* 100) / 100.0f + "°", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    try {
+                        setPosition(calculator.getWidth(calculator.getDuration(1)/2.0f,1) * scale, calculator.getHeight(calculator.getDuration(1)/2.0f,1) * scale);
+                        setScale(0.75f);
+                        setFontScale(0.75f);
+                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                    }catch (Exception e){}
+                }
+            });
+
+            addActor(new MyLabel("\u03B1\u2082: " + Math.round(calculator.getAlpha()[1]* 100) / 100.0f + "°", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    try {
+                        setPosition(calculator.getWidth(calculator.getDuration(2)/2.0f,2) * scale, calculator.getHeight(calculator.getDuration(2)/2.0f,2) * scale);
+                        setScale(0.75f);
+                        setFontScale(0.75f);
+                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                    }catch (Exception e){}
+                }
+            });
+
+            addActor(new MyLabel("X: "+(int)calc.getX()+"m; Y: "+(int)calc.getY()+"m", MyLabel.style4){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(target.getX()+(target.getWidth()/2-this.getWidth()/2), target.getY()+target.getHeight());
+                    setScale(0.75f);
+                    setFontScale(0.75f);
+                    setSize(getWidth() * 0.75f, getHeight() * 0.75f);
+                }
+            });
+
             addActor(new MyTextButton("Vissza"){
                 @Override
                 protected void init() {
@@ -173,32 +212,6 @@ public class SimulationStage extends BGStage {
                             game.setScreen(new SimulationScreen(game, calculator), false);
                         }
                     });
-                }
-            });
-
-            addActor(new MyLabel("\u03B1\u2081: " + Math.round(calculator.getAlpha()[0]* 100) / 100.0f + "°", MyLabel.style4){
-                @Override
-                protected void init() {
-                    super.init();
-                    try {
-                        setPosition(calculator.getWidth(calculator.getDuration(1)/2.0f,1) * scale, calculator.getHeight(calculator.getDuration(1)/2.0f,1) * scale);
-                        setScale(0.75f);
-                        setFontScale(0.75f);
-                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
-                    }catch (Exception e){}
-                }
-            });
-
-            addActor(new MyLabel("\u03B1\u2082: " + Math.round(calculator.getAlpha()[1]* 100) / 100.0f + "°", MyLabel.style4){
-                @Override
-                protected void init() {
-                    super.init();
-                    try {
-                        setPosition(calculator.getWidth(calculator.getDuration(2)/2.0f,2) * scale, calculator.getHeight(calculator.getDuration(2)/2.0f,2) * scale);
-                        setScale(0.75f);
-                        setFontScale(0.75f);
-                        setSize(getWidth() * 0.75f, getHeight() * 0.75f);
-                    }catch (Exception e){}
                 }
             });
         }
