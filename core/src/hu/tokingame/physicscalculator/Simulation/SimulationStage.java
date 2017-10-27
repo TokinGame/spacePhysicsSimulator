@@ -158,6 +158,20 @@ public class SimulationStage extends BGStage {
                     });
                 }
             });
+            addActor(new MyTextButton("Újra"){
+                @Override
+                protected void init() {
+                    super.init();
+                    setPosition(10, Globals.WORLD_HEIGHT-this.getHeight()-10);
+                    addListener(new ClickListener(){
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            game.setScreen(new SimulationScreen(game, calculator));
+                        }
+                    });
+                }
+            });
         }
 /*
         System.out.println("---------");
