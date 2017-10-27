@@ -161,6 +161,13 @@ public class BGSelectStage extends BGStage {
             BGShowcaseActor actor = new BGShowcaseActor(Assets.manager.get(bg));
             actors.add(actor);
             addActor(actor);
+            actor.addListener(new ClickListener(){
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    super.clicked(event, x, y);
+                    changeBG();
+                }
+            });
         }
         for (int i = 0; i < actors.size(); i++) {
             BGShowcaseActor actor = actors.get(i);
@@ -186,6 +193,15 @@ public class BGSelectStage extends BGStage {
         bgIndex = index;
         prefs.putInteger("bgIndex", index);
         prefs.flush();
+        if(Globals.sounds){
+            if(bgs[bgIndex] == Assets.SPOOKY_BG) {
+                Assets.manager.get(Assets.MAIN_MUSIC).stop();
+                Assets.manager.get(Assets.SPOOKY_MUSIC).play();
+            }else{
+                Assets.manager.get(Assets.SPOOKY_MUSIC).stop();
+                Assets.manager.get(Assets.MAIN_MUSIC).play();
+            }
+        }
         updateBG();
     }
 

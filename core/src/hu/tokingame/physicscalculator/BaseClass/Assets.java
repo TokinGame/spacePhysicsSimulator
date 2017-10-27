@@ -14,6 +14,9 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 
 import jdk.nashorn.internal.objects.Global;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
+
 /**
  * Created by M on 10/7/2016.
  */
@@ -80,6 +83,7 @@ public class Assets {
 
 
     public static final AssetDescriptor<Music> MAIN_MUSIC = new AssetDescriptor<Music>("bensound-scifi.mp3", Music.class);
+    public static final AssetDescriptor<Music> SPOOKY_MUSIC = new AssetDescriptor<Music>("bensound-creepy.mp3", Music.class);
 
 
 
@@ -136,6 +140,7 @@ public class Assets {
         manager.load(LABLE_BG);
 
         manager.load(MAIN_MUSIC);
+        manager.load(SPOOKY_MUSIC);
 
 
     }
@@ -143,7 +148,14 @@ public class Assets {
     public static void afterLoaded(){
 
         manager.get(MAIN_MUSIC).setLooping(true);
-        if(Globals.sounds) manager.get(MAIN_MUSIC).play();
+        manager.get(SPOOKY_MUSIC).setLooping(true);
+        if(Globals.sounds){
+            if(bgs[bgIndex] == SPOOKY_BG) {
+                manager.get(SPOOKY_MUSIC).play();
+            }else{
+                manager.get(MAIN_MUSIC).play();
+            }
+        }
     }
 
     public static void unload(){

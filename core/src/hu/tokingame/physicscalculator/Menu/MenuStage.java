@@ -21,6 +21,9 @@ import hu.tokingame.physicscalculator.Settings.BGSelectScreen;
 import hu.tokingame.physicscalculator.Simulation.MathScreen;
 import hu.tokingame.physicscalculator.Simulation.SimulationScreen;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgIndex;
+import static hu.tokingame.physicscalculator.BaseClass.Globals.bgs;
+
 /**
  * Created by davim on 2016. 10. 07..
  */
@@ -149,11 +152,18 @@ public class MenuStage extends MyStage {
                         Globals.sounds = !Globals.sounds;
                         if(Globals.sounds) {
                             setTexture(Assets.manager.get(Assets.MUSIC_ON));
-                            Assets.manager.get(Assets.MAIN_MUSIC).play();
+                            if(bgs[bgIndex] == Assets.SPOOKY_BG) {
+                                Assets.manager.get(Assets.MAIN_MUSIC).stop();
+                                Assets.manager.get(Assets.SPOOKY_MUSIC).play();
+                            }else{
+                                Assets.manager.get(Assets.SPOOKY_MUSIC).stop();
+                                Assets.manager.get(Assets.MAIN_MUSIC).play();
+                            }
                         }
                         else {
                             setTexture(Assets.manager.get(Assets.MUSIC_OFF));
-                            Assets.manager.get(Assets.MAIN_MUSIC).pause();
+                                Assets.manager.get(Assets.MAIN_MUSIC).stop();
+                                Assets.manager.get(Assets.SPOOKY_MUSIC).stop();
                         }
                         Globals.prefs.putBoolean("sounds", Globals.sounds);
                         Globals.prefs.flush();
