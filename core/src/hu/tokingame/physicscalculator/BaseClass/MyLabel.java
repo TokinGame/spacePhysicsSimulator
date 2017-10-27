@@ -29,12 +29,6 @@ public class MyLabel extends Label {
 
         style.fontColor = Color.WHITE;
 
-        style2 = new LabelStyle();
-        style2.font = Assets.manager.get(Assets.DIGITAL_7_FONT);
-
-
-        style2.fontColor = Color.WHITE;
-
         style3 = new LabelStyle();
         style3.font = Assets.manager.get(Assets.CALIBRIL_FONT);
         style3.fontColor = Color.BLACK;

@@ -36,15 +36,7 @@ public class Assets {
     public static final AssetDescriptor<BitmapFont> CALIBRIL_FONT
             = new AssetDescriptor<BitmapFont>("calibril.ttf", BitmapFont.class, fontParameter);
 
-    static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter2 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
-    static {
-        fontParameter2.fontFileName = "digital-7.ttf";
-        fontParameter2.fontParameters.size = 50;
-        fontParameter2.fontParameters.characters = Globals.CHARS;
-    }
 
-    public static final AssetDescriptor<BitmapFont> DIGITAL_7_FONT
-            = new AssetDescriptor<BitmapFont>("digital-7.ttf", BitmapFont.class, fontParameter2);
 
     //<editor-fold desc="Main Assets">
     public static final AssetDescriptor<Texture> TOKIN = new AssetDescriptor<Texture>("tokin.PNG", Texture.class);
@@ -106,7 +98,6 @@ public class Assets {
 
 
         manager.load(CALIBRIL_FONT);
-        manager.load(DIGITAL_7_FONT);
 
         manager.load(TOKIN);
         manager.load(BUTTONBG);
