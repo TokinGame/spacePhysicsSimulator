@@ -187,7 +187,7 @@ public class SimulationStage extends BGStage {
                 }
             });
 
-            addActor(p1Time = new MyLabel("0 s", MyLabel.style4){
+            addActor(p1Time = new MyLabel("0.0 s", MyLabel.style4){
                 @Override
                 protected void init() {
                     super.init();
@@ -197,7 +197,7 @@ public class SimulationStage extends BGStage {
                     setSize(getWidth() * 0.75f, getHeight() * 0.75f);
                 }
             });
-            addActor(p2Time = new MyLabel("0 s", MyLabel.style4){
+            addActor(p2Time = new MyLabel("0.0 s", MyLabel.style4){
                 @Override
                 protected void init() {
                     super.init();
