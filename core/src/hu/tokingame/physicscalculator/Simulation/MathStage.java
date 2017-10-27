@@ -213,7 +213,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam1);
+                    inputButtons.show(szam1,1);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -223,7 +223,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam2);
+                    inputButtons.show(szam2,2);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -233,7 +233,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam3);
+                    inputButtons.show(szam3,3);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
@@ -244,7 +244,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam1);
+                    inputButtons.show(szam1,1);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -254,7 +254,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam2);
+                    inputButtons.show(szam2,2);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
@@ -264,7 +264,7 @@ public class MathStage extends MyStage {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     super.clicked(event, x, y);
-                    inputButtons.show(szam3);
+                    inputButtons.show(szam3,3);
                     szovegcucc.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc2.setTexture(Assets.manager.get(Assets.BUTTON_INACTIVE));
                     szovegcucc3.setTexture(Assets.manager.get(Assets.BUTTON_ACTIVE));

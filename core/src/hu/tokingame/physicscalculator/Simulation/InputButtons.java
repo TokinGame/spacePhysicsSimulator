@@ -36,12 +36,12 @@ public class InputButtons extends Group {
 
     private final InputButtons btns = this;
 
+    private int selected;
 
 
     public InputButtons(MathStage stage) {
         this.setVisible(false);
         setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
-
         mathStage = stage;
 
 
@@ -204,7 +204,7 @@ public class InputButtons extends Group {
                     var.setText(var.getText().substring(0,var.getText().length()-1));
                     return;
                 }
-                if(t.equals("0")){
+                if(t.equals("0") && selected != 3){
                     if(var.getText().length() != 0) var.setText(var.getText()+t);
                 }else {
                     var.setText(var.getText()+t);
@@ -220,8 +220,9 @@ public class InputButtons extends Group {
         super.act(delta);
     }
 
-    public void show(MyLabel szoveg){
+    public void show(MyLabel szoveg, int selected){
         var = szoveg;
+        this.selected = selected;
         if(!this.isVisible()){
             this.setVisible(true);
             this.setPosition(Globals.WORLD_WIDTH-750,0);
