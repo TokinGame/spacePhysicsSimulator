@@ -198,12 +198,12 @@ public class InputButtons extends Group {
 
     void iras(String t){
         if(var != null){
+            if(t.equals("bsp")){
+                if(var.getText().length < 1) return;
+                var.setText(var.getText().substring(0,var.getText().length()-1));
+                return;
+            }
             if(var.getText().length() < Globals.maximumInputLength){
-                if(t.equals("bsp")){
-                    if(var.getText().length < 1) return;
-                    var.setText(var.getText().substring(0,var.getText().length()-1));
-                    return;
-                }
                 if(t.equals("0") && selected != 3){
                     if(var.getText().length() != 0) var.setText(var.getText()+t);
                 }else {
