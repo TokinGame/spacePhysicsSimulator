@@ -71,7 +71,8 @@ public class ExitStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         Assets.unload();
-                        System.exit(0);
+                        //System.exit(0);
+                        Gdx.app.exit();
                     }
                 });
                 setTexture(Assets.manager.get(Assets.STEELBUTTON));

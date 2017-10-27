@@ -69,4 +69,10 @@ public class BetoltoScreen extends MyScreen {
     public void hide() {
 
     }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        stage.dispose();
+    }
 }
