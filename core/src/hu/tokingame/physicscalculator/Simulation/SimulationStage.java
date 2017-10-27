@@ -170,7 +170,7 @@ public class SimulationStage extends BGStage {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
                             super.clicked(event, x, y);
-                            game.setScreen(new SimulationScreen(game, calculator));
+                            game.setScreen(new SimulationScreen(game, calculator), false);
                         }
                     });
                 }
