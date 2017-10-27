@@ -23,7 +23,7 @@ public class Globals {
     public static final Preferences prefs = Gdx.app.getPreferences("mainPrefs");
     
     //// TODO: 10/26/2017 Állítsd át false-ra
-    public static final boolean IS_DEBUG = true;
+    public static final boolean IS_DEBUG = false;
 
     public static final AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.EARTH_BG, Assets.MOON_BG, Assets.MARS_BG, Assets.JUPITER_BG, Assets.SPOOKY_BG};
     public static final AssetDescriptor<Texture>[] bgIcons = new AssetDescriptor[]{Assets.EARTH_ICON, Assets.MOON_ICON, Assets.MARS_ICON, Assets.JUPITER_ICON, Assets.SPOOKY_ICON};
