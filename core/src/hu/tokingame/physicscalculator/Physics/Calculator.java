@@ -102,7 +102,6 @@ public class Calculator {
     }
 
     public float getHeight(float time, int index) throws Exception{
-        //// TODO: 2017. 10. 12. megírni, hogy egy adott időpontban milyen magasan van
         float a = 0f;
         switch (index){
             case 1: a = (float) Math.toRadians(alpha[0]); break;
@@ -113,7 +112,6 @@ public class Calculator {
     }
 
     public float getWidth(float time, int index) throws Exception{
-        //// TODO: 2017. 10. 12. megírni, hogy egy adott időpontban milyen magasan van
         float a = 0f;
         switch (index){
             case 1: a = (float) Math.toRadians(alpha[0]); break;
@@ -135,7 +133,6 @@ public class Calculator {
     }
 
     public float getDuration(int index) throws Exception{
-        // TODO: 2017. 10. 12. Kiszámolni, hogy mennyi idő alatt ér a célponthoz. Az animáció méretezésének a szempontjából fontos.
         float a = 0f;
         switch (index){
             case 1: a = (float) Math.toRadians(alpha[0]); break;

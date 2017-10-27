@@ -41,7 +41,6 @@ public class BGSelectStage extends BGStage {
         return (int)(Math.random()*(b-a+1)+a);
     }
 
-    //// TODO: 10/24/2017 Normális hátterek
     //private AssetDescriptor<Texture>[] bgs = new AssetDescriptor[]{Assets.POTATO, Assets.STEELBUTTON, Assets.CANNONBASE};
 
     private ArrayList<BGShowcaseActor> actors = new ArrayList<BGShowcaseActor>();
