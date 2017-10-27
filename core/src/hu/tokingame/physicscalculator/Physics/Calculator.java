@@ -1,8 +1,10 @@
 package hu.tokingame.physicscalculator.Physics;
 
+import hu.tokingame.physicscalculator.BaseClass.Globals;
 import sun.nio.cs.Surrogate;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.IS_DEBUG;
 import static hu.tokingame.physicscalculator.Physics.MathUtils.sqr;
 import static hu.tokingame.physicscalculator.Physics.MathUtils.dToF;
 import static hu.tokingame.physicscalculator.Physics.MathUtils.fToD;
@@ -140,9 +142,11 @@ public class Calculator {
             case 2: a = (float) Math.toRadians(alpha[1]); break;
             default: throw new Exception("Huehue nem 1 és 2 között van");
         }
-        System.out.println(v0);
-        System.out.println(x);
-        System.out.println(Math.cos(a));
+        if(IS_DEBUG) {
+            System.out.println(v0);
+            System.out.println(x);
+            System.out.println(Math.cos(a));
+        }
         return (float) (x / (v0 * Math.cos(a)));
     }
 
@@ -164,16 +168,17 @@ public class Calculator {
 
     public static void main(String[] args) throws Exception {
         Calculator calculator = new Calculator(150, 14, 3);
-        System.out.println("---------");
+        if(IS_DEBUG)System.out.println("---------");
         int index = 1;
         float duration = calculator.getDuration(index);
-        System.out.println(calculator.getDuration(index));
-        System.out.println("---------MAX");
-        System.out.println(calculator.getMaxHeight(index));
-        System.out.println("---------");
-
+        if(IS_DEBUG) {
+            System.out.println(calculator.getDuration(index));
+            System.out.println("---------MAX");
+            System.out.println(calculator.getMaxHeight(index));
+            System.out.println("---------");
+        }
         for(float f = 0; f<=duration; f+=duration/30){
-            System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
+            if(IS_DEBUG)System.out.println("time:" + f +" X:" + calculator.getWidth(f,index) + " Y:" + calculator.getHeight(f,index));
         }
 
     }

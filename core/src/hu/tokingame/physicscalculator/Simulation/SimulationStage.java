@@ -22,6 +22,8 @@ import hu.tokingame.physicscalculator.Menu.MenuScreen;
 import hu.tokingame.physicscalculator.MyGdxGame;
 import hu.tokingame.physicscalculator.Physics.Calculator;
 
+import static hu.tokingame.physicscalculator.BaseClass.Globals.IS_DEBUG;
+
 
 public class SimulationStage extends BGStage {
 
@@ -81,8 +83,10 @@ public class SimulationStage extends BGStage {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("-Scale-");
-        System.out.println(scale);
+        if(IS_DEBUG){
+            System.out.println("-Scale-");
+            System.out.println(scale);
+        }
         int pmheight = pixmap.getHeight();
         int pmwidth = pixmap.getWidth();
         try {
@@ -118,7 +122,7 @@ public class SimulationStage extends BGStage {
         }finally{
             grafikon = new OneSpriteStaticActor(new Texture(pixmap));
             grafikon.setPosition(0,0);
-            if(Globals.IS_DEBUG){
+            if(IS_DEBUG){
                 grafikon.debug();
                 setDebugAll(true);
             }

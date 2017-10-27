@@ -45,6 +45,18 @@ public class MathStage extends MyStage {
 
     MathStage stage;
 
+
+    String helpstr = "A röppálya kiszámításához szükséges adatok:\n"+
+                "- kezdeti sebesség\n"+
+                "- célpont távolsága\n"+
+                "- célpont magassága\n"+
+                "A kilövési szögek meghatározásához nyomd meg\n"+
+                "a számolás gombot.\n"+
+                "Ha a célpont nem érhető el ezzel a sebességel\n"+
+                "akkor a 'nem létezik ilyen szög' felirat jelenik meg\n"+
+                "Ha a szöget sikerült kiszámolni, a röppálya\n"+
+                "megtekinthető a szimulálás gomb megnyomásával.";
+
     public MathStage(Viewport viewport, Batch batch, final MyGdxGame game) {
 
         super(viewport, batch, game);
@@ -272,7 +284,34 @@ public class MathStage extends MyStage {
             });
 
 
-
+            addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.HELP)){
+                @Override
+                protected void init() {
+                    super.init();
+                    setSize(100, 100);
+                    setPosition(10, 10);
+                    addListener(new ClickListener(){
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            addActor(new MyLabel(helpstr, MyLabel.style4){
+                                @Override
+                                protected void init() {
+                                    super.init();
+                                    setPosition(Globals.WORLD_WIDTH/2-this.getWidth()/2, Globals.WORLD_HEIGHT/2-this.getHeight()/2);
+                                    addListener(new ClickListener(){
+                                        @Override
+                                        public void clicked(InputEvent event, float x, float y) {
+                                            super.clicked(event, x, y);
+                                            remove();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
 
 
 
